@@ -3,8 +3,10 @@ require "palette"
 ninja = require "ninja"
 
 ninja.init()
+frame = 0
 
-function update(frame)
+function update()
+  frame = frame + 1
 
   for i = 1, #Palette do
     local color = Palette[i]
