@@ -20,7 +20,7 @@ function update(frame)
 
   ninja.draw(frame)
 
-  if ui.btn(BTN_Z, 0) then
+  if ui.btn(BTN_Z, 0) and frame > 20 then
     ninja.change_state(NinjaStates.smoke)
   end
 
