@@ -8,7 +8,7 @@ local states = {
 
 local drawers = {
     [states.idle] = function(frame)
-        local f = ((frame/4)%3) // 1
+        local f = ((frame/12)%3) // 1
         ui.tile(Sprites.img.ninja_a, f, 100, 100)
     end,
     [states.smoke] = function(frame)
