@@ -27,7 +27,7 @@ function update()
 
   if ui.btnp(BTN_Z, 0) and frame > 3 then
     ninja.change_state(NinjaStates.smoke)
-    sfx.fx(3, 50)
+    sfx.fx(35, 50)
   end
 
 end
