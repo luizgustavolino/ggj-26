@@ -1,7 +1,10 @@
 require "sprites"
 require "palette"
+ninja = require "ninja"
 
-function update()
+
+
+function update(frame)
 
   for i = 1, #Palette do
     local color = Palette[i]
@@ -13,8 +16,8 @@ function update()
   ui.camera()
 
   ui.rectfill(50, 50, 80, 80, 2)
-  ui.print("hello world?", 20, 20, 2)
+  ui.print("hello worlders?", 20, 20, 2)
 
-  ui.spr(Sprites.find("ninja_a"), 100, 100)
+  ninja.draw(frame)
 
 end 
