@@ -3,10 +3,10 @@ require "palette"
 
 function update()
 
-  
-  ui.palset(0, 0x03E6) 
-  ui.palset(1, 0x07E0) 
-  ui.palset(2, 0x467A)
+  for i = 1, #Palette do
+    local color = Palette[i]
+    ui.palset(i - 1, color)
+  end
 
   ui.cls(0)
   ui.clip(0, 0, 480, 270)
