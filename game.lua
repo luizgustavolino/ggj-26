@@ -25,8 +25,8 @@ function update()
   ui.map(s01.BG2, 0, 0)
   ninja.draw(frame)
 
-  if ui.btn(BTN_Z, 0) and frame > 4 then
+  if ui.btn(BTN_Z, 0) and frame > 3 then
     ninja.change_state(NinjaStates.smoke)
   end
-  
+
 end
