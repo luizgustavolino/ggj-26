@@ -1,5 +1,6 @@
 local M = {}
 
+
 local states = {
   idle = 'idle',
   smoke = 'smoke'
@@ -15,15 +16,14 @@ local drawers = {
     end 
 }
 
-local state_frame = 0
-
 M.init = function()
     M.state = states.idle
+    M.state_frame = 0
 end
 
 M.draw = function(frame)
-    state_frame = state_frame + 1
-    drawers[M.state](state_frame)
+    drawers[M.state](M.state_frame)
+    M.state_frame = M.state_frame + 1
 end 
 
 return M 
