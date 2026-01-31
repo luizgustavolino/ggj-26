@@ -1,25 +1,29 @@
 local M = {}
 
-
-local states = {
+NinjaStates = {
   idle = 'idle',
   smoke = 'smoke'
 }
 
 local drawers = {
-    [states.idle] = function(frame)
+    [NinjaStates.idle] = function(frame)
         local f = ((frame/12)%3) // 1
         ui.tile(Sprites.img.ninja_a, f, 100, 100)
     end,
-    [states.smoke] = function(frame)
-
+    [NinjaStates.smoke] = function(frame)
+        local f = ((frame/12)%3) // 1
+        ui.tile(Sprites.img.ninja_a, f, 100, 100)
     end 
 }
 
 M.init = function()
-    M.state = states.idle
+    M.state = NinjaStates.idle
     M.state_frame = 0
 end
+
+M.change_state = function(new_state)
+    M.state = new_state
+end 
 
 M.draw = function(frame)
     drawers[M.state](M.state_frame)

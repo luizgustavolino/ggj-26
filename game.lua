@@ -16,7 +16,7 @@ function update(frame)
   ui.camera()
 
   ui.rectfill(50, 50, 80, 80, 2)
-  ui.print("hello worlders?", 20, 20, 2)
+  ui.print("hello worlders?!", 20, 20, 2)
 
   ninja.draw(frame)
 
