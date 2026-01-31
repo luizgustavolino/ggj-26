@@ -28,4 +28,5 @@ function update()
   if ui.btn(BTN_Z, 0) and frame > 4 then
     ninja.change_state(NinjaStates.smoke)
   end
+  
 end
