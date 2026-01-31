@@ -17,12 +17,10 @@ function update()
   ui.clip(0, 0, 480, 270)
   ui.camera()
 
-  ui.rectfill(50, 50, 80, 80, 2)
   ui.print("hello?", 20, 20, 2)
-
   ninja.draw(frame)
 
-  if ui.btn(BTN_Z, 0) and frame > 20 then
+  if ui.btn(BTN_Z, 0) and frame > 4 then
     ninja.change_state(NinjaStates.smoke)
   end
 

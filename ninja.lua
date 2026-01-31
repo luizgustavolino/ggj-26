@@ -11,8 +11,10 @@ local drawers = {
         ui.tile(Sprites.img.ninja_a, f, 100, 100)
     end,
     [NinjaStates.smoke] = function(frame)
-        local f = ((frame/12)%3) // 1
-        ui.tile(Sprites.img.ninja_a, 3 + f, 100, 100)
+        local f = ((frame/9)) // 1
+        if f < 10 then 
+            ui.tile(Sprites.img.ninja_a, 3 + f, 100, 100)
+        end 
     end 
 }
 
