@@ -22,6 +22,7 @@ function update()
   ui.print("hello?", 20, 20, 2)
 
   ui.map(s01.BG1, 0, 0)
+  ui.map(s01.BG2, 0, 0)
   ninja.draw(frame)
 
   if ui.btn(BTN_Z, 0) and frame > 4 then
