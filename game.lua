@@ -2,7 +2,7 @@ require "sprites"
 require "palette"
 ninja = require "ninja"
 
-
+ninja.init()
 
 function update(frame)
 
