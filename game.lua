@@ -1,6 +1,5 @@
-Sprites = require "sprites"
+require "sprites"
 require "palette"
-
 
 function update()
 
@@ -16,6 +15,6 @@ function update()
   ui.rectfill(50, 50, 80, 80, 2)
   ui.print("hello world?", 20, 20, 2)
 
-  ui.spr(Sprites.ninja_a, 100, 100)
+  ui.spr(Sprites.find("ninja_a"), 100, 100)
 
 end 
