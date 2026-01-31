@@ -20,4 +20,8 @@ function update(frame)
 
   ninja.draw(frame)
 
+  if ui.btn(BTN_Z, 0) then
+    ninja.change_state(NinjaStates.smoke)
+  end
+
 end 

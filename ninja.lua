@@ -12,7 +12,7 @@ local drawers = {
     end,
     [NinjaStates.smoke] = function(frame)
         local f = ((frame/12)%3) // 1
-        ui.tile(Sprites.img.ninja_a, f, 100, 100)
+        ui.tile(Sprites.img.ninja_a, 3 + f, 100, 100)
     end 
 }
 
@@ -23,6 +23,7 @@ end
 
 M.change_state = function(new_state)
     M.state = new_state
+    M.state_frame = 0
 end 
 
 M.draw = function(frame)
