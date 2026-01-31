@@ -1,4 +1,4 @@
-require "sprites"
+Sprites = require "sprites"
 require "palette"
 
 
