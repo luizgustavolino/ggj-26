@@ -5,6 +5,8 @@ ninja = require "ninja"
 ninja.init()
 frame = 0
 
+local s01 = require "map.s01"
+
 function update()
   frame = frame + 1
 
@@ -18,10 +20,11 @@ function update()
   ui.camera()
 
   ui.print("hello?", 20, 20, 2)
+
+  ui.map(s01.BG1, 0, 0)
   ninja.draw(frame)
 
   if ui.btn(BTN_Z, 0) and frame > 4 then
     ninja.change_state(NinjaStates.smoke)
   end
-
-end 
+end
