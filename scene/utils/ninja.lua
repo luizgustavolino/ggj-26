@@ -3,8 +3,8 @@ local SCREEN_W = 480
 local SCREEN_H = 270
 local TILES_X = 30
 local TILES_Y = 17
-local MOVE_STEP = 4
-local MOVE_FRAMES = 4
+local MOVE_STEP = 2
+local MOVE_FRAMES = 8
 
 local MIN_TILE_Y = 1
 local MAX_TILE_Y = 15
