@@ -6,10 +6,10 @@ HandStates = {
 }
 
 local drawers = {
-    [NinjaStates.waiting] = function(frame)
+    [HandStates.waiting] = function(frame)
         ui.tile(Sprites.img.hands, 0, 480//2, 270//2)
     end,
-    [NinjaStates.playing] = function(frame)
+    [HandStates.playing] = function(frame)
         
     end 
 }
