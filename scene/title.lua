@@ -27,6 +27,8 @@ M.update = function(frame)
             end
         end 
     }
+
+    pcall(actions[M.state], frame)
 end 
 
 M.draw = function(frame)
@@ -45,7 +47,7 @@ M.draw = function(frame)
         local d = math.sin(frame/12) * 3
         local p2 = { x = 480/2 - 16 + 32 + 8 - 64, y = d + 200 - 24 }
         local p3 = { x = 480/2 - 16 + 32 + 8, y = d + 200 - 24 }
-        
+
         if M.players == 2 then 
                 ui.tile(Sprites.img.hands, 0, p2.x, p2.y)
         elseif M.players == 3 then 
