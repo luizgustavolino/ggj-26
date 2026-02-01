@@ -271,6 +271,10 @@ local function new()
             [GameStates.players_will_seek] = function()
                 M.tile_x = target_tile_x
                 M.tile_y = target_tile_y
+
+                M.x = M.tile_x * TILE_SIZE
+                M.y = M.tile_y * TILE_SIZE
+                
                 M.change_state(NinjaStates.freeze)
             end,
             [GameStates.level_conclusion] = function()
