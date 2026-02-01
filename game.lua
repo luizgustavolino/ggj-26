@@ -20,7 +20,8 @@ function update()
     g = g // 2
     b = b // 2
 
-    ui.palset(i - 1, r | g | b)
+    ui.palset(i - 1, r | (g << 5) | (b << 10))
+
   end
   
   frame = frame + 1
