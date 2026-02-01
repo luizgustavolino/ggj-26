@@ -116,6 +116,11 @@ M.draw = function(frame)
     for i = 1, #M.hands do
         M.hands[i].draw(frame, i)
     end
+
+    if M.state == GameStates.level_conclusion or true then
+        local f = (1 + math.min(13, (frame//4)%(13*2)))
+        ui.spr(Sprites.img["ganhou" .. f], 480/2 - 128/2, 4)
+    end
     
     M.state_frame = M.state_frame + 1
 end 
