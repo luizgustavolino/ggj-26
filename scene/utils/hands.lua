@@ -117,6 +117,9 @@ local function new()
             end,
             [GameStates.ninja_is_hidding] = function()
                 M.change_state(HandStates.waiting)
+            end,
+            [GameStates.players_will_seek] = function()
+                M.change_state(HandStates.playing)
             end
         }
 
