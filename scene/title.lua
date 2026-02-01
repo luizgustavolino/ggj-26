@@ -9,7 +9,7 @@ M.update = function(frame)
 end 
 
 M.draw = function(frame)
-    ui.print("Title", 240, 135, 3)
+    ui.spr(img.title, 480/2 - 180/2, 110)
 end 
 
 return M
