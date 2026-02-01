@@ -22,10 +22,10 @@ M.draw = function(frame)
 
     if M.state == TitleStates.waiting_start then
         if frame % 60 > 20 then
-            ui.print("- Aperte A ou B para iniciar -", 480/2 - 138/2, 200, 180)
+            ui.print("- Aperte A ou B para iniciar -", 480/2 - 138/2, 200, 181)
         end 
     elseif M.state == TitleStates.waiting_players then
-        ui.print("Quantas pessoas para jogar?", 480/2 - 138/2, 200, 130)
+        ui.print("Quantas pessoas para jogar?", 480/2 - 138/2, 170, 181)
         ui.tile(Sprites.img.nplayers, 0, 480/2 - 32 - 32, 200)
         ui.tile(Sprites.img.nplayers, 1, 480/2 - 32 + 32, 200)
     end
