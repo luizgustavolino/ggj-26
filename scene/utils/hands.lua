@@ -5,6 +5,7 @@ local BOUNCE_FACTOR = 1.1
 local SCREEN_W = 480
 local SCREEN_H = 270
 local SPRITE_SIZE = 16
+local MAX_BETS = 3
 
 HandStates = {
   map_looking = 'map_looking',
@@ -58,9 +59,11 @@ local function new()
             end
 
             if ui.btn(BTN_Z, player) then 
-                local tx = (M.x + (SPRITE_SIZE / 2)) // 16
-                local ty = (M.y + (SPRITE_SIZE)) // 16
-                M.place_bet(tx,ty)
+                if #M.bets < MAX_BETS then
+                    local tx = (M.x + (SPRITE_SIZE / 2)) // 16
+                    local ty = (M.y + (SPRITE_SIZE)) // 16
+                    M.place_bet(tx,ty)
+                end
             end 
 
             local speed = math.sqrt(M.acel_x * M.acel_x + M.acel_y * M.acel_y)
