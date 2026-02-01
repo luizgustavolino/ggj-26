@@ -184,8 +184,8 @@ local function new()
         M.state_frame = 0
         M.player = params.player or 0
 
-        M.tile_x = params.tile_x or 6
-        M.tile_y = params.tile_y or 6
+        M.tile_x = 15
+        M.tile_y = 8
 
         M.x = M.tile_x * TILE_SIZE
         M.y = M.tile_y * TILE_SIZE
