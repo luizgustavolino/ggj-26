@@ -12,6 +12,7 @@ local MIN_TILE_X = 0
 local MAX_TILE_X = 29
 
 NinjaStates = {
+    start = 'start',
     idle = 'idle',
     smoke = 'smoke',
     moving = 'moving'
@@ -90,15 +91,20 @@ local function new()
     end
 
     local updaters = {
-        [NinjaStates.idle] = function(frame, player)
-            local dir = get_direction_from_input(player)
-            if dir ~= Directions.none then
-                start_move(dir)
+        [NinjaStates.start] = function(frame, player)
+            if ui.btn(BTN_Z, player) then
+                M.change_state(NinjaStates.smoke)
             end
         end,
         [NinjaStates.smoke] = function(frame, player)
             if frame >= 10 * 9 then
                 M.change_state(NinjaStates.idle)
+            end
+        end,
+        [NinjaStates.idle] = function(frame, player)
+            local dir = get_direction_from_input(player)
+            if dir ~= Directions.none then
+                start_move(dir)
             end
         end,
         [NinjaStates.moving] = function(frame, player)
@@ -145,7 +151,7 @@ local function new()
     }
 
     local drawers = {
-        [NinjaStates.idle] = function(frame)
+        [NinjaStates.start] = function(frame, player)
             local f = ((frame / 12) % 3) // 1
             ui.tile(Sprites.img.ninja_a, f, M.x, M.y)
         end,
@@ -155,6 +161,9 @@ local function new()
                 ui.tile(Sprites.img.ninja_a, 3 + f, M.x, M.y)
             end
         end,
+        [NinjaStates.idle] = function(frame)
+            ui.tile(Sprites.map.scene_b, 0, M.x, M.y)
+        end,
         [NinjaStates.moving] = function(frame)
             ui.tile(Sprites.map.scene_b, 0, M.x, M.y)
         end
@@ -162,7 +171,7 @@ local function new()
 
     M.init = function(params)
         params = params or {}
-        M.state = NinjaStates.idle
+        M.state = NinjaStates.start
         M.state_frame = 0
         M.player = params.player or 0
 
