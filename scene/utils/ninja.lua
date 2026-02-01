@@ -17,6 +17,7 @@ NinjaStates = {
     idle = 'idle',
     freeze = 'freeze',
     win = 'win',
+    lose = 'lose',
     smoke = 'smoke',
     moving = 'moving'
 }
@@ -137,6 +138,9 @@ local function new()
         [NinjaStates.win] = function(frame, player)
             -- não move!
         end,
+        [NinjaStates.lose] = function(frame, player)
+            -- não move!
+        end,
         [NinjaStates.moving] = function(frame, player)
             move_progress = move_progress + 1
 
@@ -217,6 +221,11 @@ local function new()
             if frame % 20 >= 10 then  f = 5 end 
             ui.tile(Sprites.img.ninja_a, f, M.x, M.y)
         end,
+        [NinjaStates.lose] = function(frame, player)
+            local f = 2
+            if frame % 20 >= 10 then  f = 4 end 
+            ui.tile(Sprites.img.ninja_a, f, M.x, M.y)
+        end
     }
 
     M.init = function(params)
@@ -262,7 +271,11 @@ local function new()
                 M.change_state(NinjaStates.freeze)
             end,
             [GameStates.level_conclusion] = function()
-                M.change_state(NinjaStates.win)
+                if M.game.win == true then 
+                    M.change_state(NinjaStates.win)
+                else 
+                    M.change_state(NinjaStates.lose)
+                end
             end
         }
 
