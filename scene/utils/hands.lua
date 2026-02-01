@@ -35,7 +35,7 @@ local function new()
         [HandStates.waiting] = function(frame)
             -- just wait
         end,
-        [HandStates.playing] = function(frame)
+        [HandStates.playing] = function(frame, player)
             if ui.btn(UP, player) then
                 M.acel_y = M.acel_y - ACCELERATION
             end
@@ -98,7 +98,7 @@ local function new()
     end
 
     M.update = function(frame, player)
-        updaters[M.state](M.state_frame)
+        updaters[M.state](M.state_frame, M.player)
     end
 
     M.draw = function(frame)
