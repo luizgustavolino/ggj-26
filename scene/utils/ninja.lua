@@ -49,7 +49,6 @@ local function new()
 
     local function is_tile_blocked(tile_x, tile_y)
         if not block_layer then return false end
-
         local tile_index = tile_y * map_width + tile_x + 1
 
         for layer_key, layer_data in pairs(block_layer) do
@@ -208,9 +207,8 @@ local function new()
         M.state_frame = 0
     end
 
-    M.update = function(frame, player)
-        player = player or M.player
-        updaters[M.state](M.state_frame, player)
+    M.update = function(frame, game_state)
+        updaters[M.state](M.state_frame, M.player, game_state)
     end
 
     M.draw = function(frame)

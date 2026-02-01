@@ -97,7 +97,7 @@ local function new()
         M.state_frame = 0
     end
 
-    M.update = function(frame, player)
+    M.update = function(frame, game_state)
         updaters[M.state](M.state_frame, M.player - 1)
     end
 

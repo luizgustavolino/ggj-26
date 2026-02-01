@@ -1,7 +1,28 @@
 local M = {}
 
 local GameStates = {
-    waiting_start = "waiting_start"
+    -- intro, ninja vai estar esperando
+    -- P2 e P3 vão estar invisíveis
+    -- 10 segundos para todos verem o mapa
+    waiting_start = "waiting_start",
+
+    -- instruções para todos fecharem os olhos
+    -- ninja confirma que está pronto pelo controle
+    waiting_ninja_start = "waiting_ninja_start",
+
+    -- 10 segundos para o ninja se esconder no cenário
+    -- ele usa o controle para trocar de asset
+    -- P2 e P3 de olhos fechados
+    ninja_is_hidding = "ninja_is_hidding",
+
+    -- ninja não pode ser mover mais
+    -- jogadores começaam a procurar
+    -- com controle, podem dar até 3 palpites
+    -- limite de tempo maior, ou até achar o ninja
+    players_will_seek = "players_will_seek",
+
+    -- encerramento
+    level_conclusion = "level_conclusion",
 }
 
 M.init = function(params)
@@ -27,9 +48,10 @@ end
 
 M.update = function(frame)
     local actions = {
+        local mstate = M.state
         [GameStates.waiting_start] = function(frame)
-            M.ninja.update(frame)
-            for i = 1, #M.hands do M.hands[i].update(frame, i) end
+            M.ninja.update(frame, 0, mstate)
+            for i = 1, #M.hands do M.hands[i].update(frame, i, mstate) end
         end
     }
 
