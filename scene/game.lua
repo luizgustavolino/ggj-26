@@ -36,6 +36,7 @@ GameEvents = {
 M.init = function(params)
     M.players = params.players
     M.state_frame = 0
+    M.win = false
 
     M.map = require "map.s01"
 
@@ -101,6 +102,7 @@ M.update = function(frame)
             end
 
             if total_bets == max_bets then
+                M.win = false
                 M.change_state(GameStates.level_conclusion)
             end
         end,
@@ -128,7 +130,7 @@ M.draw = function(frame)
 
     if M.state == GameStates.level_conclusion then
         local f = (1 + math.min(12, (frame//4)%(13*2)))
-        ui.spr(Sprites.img["ganhou" .. f], 480/2 - 128/2, 4)
+        ui.spr(Sprites.img["perdeu" .. f], 480/2 - 128/2, 4)
     end
     
     M.state_frame = M.state_frame + 1
