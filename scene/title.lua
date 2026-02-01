@@ -39,7 +39,7 @@ M.update = function(frame)
         end 
     }
 
-    pcall(actions[M.state], frame)
+    actions[M.state](frame)
 end 
 
 M.draw = function(frame)
