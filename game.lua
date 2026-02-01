@@ -19,7 +19,6 @@ function update()
     ui.palset(i - 1, color)
   end
 
-  ui.cls(2)
   ui.clip(0, 0, 480, 270)
   ui.camera()
 
