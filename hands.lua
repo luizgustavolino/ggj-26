@@ -7,7 +7,8 @@ HandStates = {
 
 local drawers = {
     [HandStates.waiting] = function(frame)
-        ui.tile(Sprites.img.hands, 0, 480//2, 270//2)
+        local d = math.sin(frame/100) * 3
+        ui.tile(Sprites.img.hands, 0, d + 480//2, 270//2)
     end,
     [HandStates.playing] = function(frame)
         
