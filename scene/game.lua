@@ -13,11 +13,12 @@ M.init = function(map, params)
     M.ninja = require "scene.utils.ninja"
     M.ninja.init()
 
+    local Hands = require "scene.utils.hands"
     M.hands = {}
-    table.insert(M.hands, require "scene.utils.hands")
-    table.insert(M.hands, require "scene.utils.hands")
+    table.insert(M.hands, Hands.new())
+    table.insert(M.hands, Hands.new())
 
-    for i = 1, #M.hands do M.hands[i].init() end 
+    for i = 1, #M.hands do M.hands[i].init() end
 end 
 
 M.update = function(frame)
