@@ -48,8 +48,8 @@ end
 
 M.update = function(frame)
     local actions = {
-        local mstate = M.state
         [GameStates.waiting_start] = function(frame)
+            local mstate = M.state
             M.ninja.update(frame, 0, mstate)
             for i = 1, #M.hands do M.hands[i].update(frame, i, mstate) end
         end
