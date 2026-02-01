@@ -16,10 +16,11 @@ function update()
     local g = (color & 0b0000001111100000) >> 5
     local b = (color & 0b0111110000000000) >> 10
 
-    local brightness = math.max(Director.get_brightness(), 1)
-    r = r // brightness
-    g = g // brightness
-    b = b // brightness
+    local brightness = Director.get_brightness()
+
+    r = math.floor(r * brightness)
+    g = math.floor(g * brightness)
+    b = math.floor(b * brightness)
 
     ui.palset(i - 1, r | (g << 5) | (b << 10))
 
@@ -30,5 +31,4 @@ function update()
 
   Director.update()
   Director.draw()
-
 end

@@ -37,7 +37,7 @@ M.draw = function()
 end
 
 M.get_brightness = function()
-    return M.brightness
+    return math.max(0, math.min(1, M.brightness))
 end
 
 M.fade_in = function(frames)
