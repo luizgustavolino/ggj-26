@@ -35,7 +35,7 @@ local function new()
     local target_tile_x = 0
     local target_tile_y = 0
     local queued_dir = Directions.none
-    local item_index = 0
+    local item_index = math.random(0, 24)
     local item_changes_left = 3
 
     local block_layer = nil
@@ -93,7 +93,7 @@ local function new()
     end
 
     local function change_item(frame, player)
-        if item_changes_left > 0 then
+        if item_changes_left > 1 then
             local new_index
             
             repeat
