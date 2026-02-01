@@ -22,6 +22,7 @@ local drawers = {
         
         local tx = (M.x + (SPRITE_SIZE / 2)) // 1
         local ty = (M.y + SPRITE_SIZE) // 1
+        
         ui.tile(Sprites.img.hands, 1, tx, ty)
         ui.tile(Sprites.img.hands, 0, M.x, d + M.y)
     end,
