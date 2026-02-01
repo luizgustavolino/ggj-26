@@ -8,12 +8,25 @@ local TitleStates = {
 
 M.init = function()
     M.state = TitleStates.waiting_start 
+    M.players = 2
 end 
 
 M.update = function(frame)
-    if ui.btn(BTN_Z, 0) or ui.btn(BTN_X, 0) then
-        M.state = TitleStates.waiting_players
-    end
+
+    local actions = {
+        [TitleStates.waiting_start] = function(frame) 
+            if ui.btn(BTN_Z, 0) then
+                M.state = TitleStates.waiting_players
+            end
+        end,
+        [TitleStates.waiting_players] = function(frame) 
+            if ui.btn(BTN_Z, 0) then
+                M.state = TitleStates.transition_to_game
+            elseif ui.btn(BTN_X, 0) then
+                M.state = TitleStates.waiting_start
+            end
+        end 
+    }
 end 
 
 M.draw = function(frame)
@@ -32,7 +45,12 @@ M.draw = function(frame)
         local d = math.sin(frame/12) * 3
         local p2 = { x = 480/2 - 16 + 32 + 8 - 64, y = d + 200 - 24 }
         local p3 = { x = 480/2 - 16 + 32 + 8, y = d + 200 - 24 }
-        ui.tile(Sprites.img.hands, 0, p2.x, p2.y)
+        
+        if M.players == 2 then 
+                ui.tile(Sprites.img.hands, 0, p2.x, p2.y)
+        elseif M.players == 3 then 
+            ui.tile(Sprites.img.hands, 1, p3.x, p3.y)
+        end 
     end
 end 
 
