@@ -4,7 +4,7 @@ local GameStates = {
     waiting_start = "waiting_start"
 }
 
-M.init = function(map, params)
+M.init = function(params)
     M.state = GameStates.waiting_start
     M.players = params.players
 
@@ -18,10 +18,10 @@ M.init = function(map, params)
     M.hands = {}
     
     for i = 1, num_hands do
-        table.insert(M.hands, Hands.new())
+        local hand = Hands.new()
+        table.insert(M.hands, hand)
+        hand.init()
     end
-
-    for i = 1, #M.hands do M.hands[i].init() end
 end 
 
 M.update = function(frame)
