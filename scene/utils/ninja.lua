@@ -93,7 +93,7 @@ local function new()
 
     local updaters = {
         [NinjaStates.start] = function(frame, player)
-            if ui.btn(BTN_Z, player) then
+            if ui.btnp(BTN_Z, player) then
                 M.change_state(NinjaStates.smoke)
             end
         end,
@@ -108,8 +108,8 @@ local function new()
                 start_move(dir)
             end
 
-            if ui.btn(BTN_Z, player) then
-                M.item_index = (M.item_index + 1) % 25
+            if ui.btnp(BTN_Z, player) then
+                item_index = (item_index + 1) % 25
             end
         end,
         [NinjaStates.moving] = function(frame, player)
@@ -123,13 +123,15 @@ local function new()
                 M.x = M.x - MOVE_STEP
             elseif move_dir == Directions.right then
                 M.x = M.x + MOVE_STEP
-            elseif ui.btn(BTN_Z, player) then
-                M.item_index = (M.item_index + 1) % 25
             end
 
             local input_dir = get_direction_from_input(player)
             if input_dir ~= Directions.none then
                 queued_dir = input_dir
+            end
+
+            if ui.btnp(BTN_Z, player) then
+                item_index = (item_index + 1) % 25
             end
 
             if move_progress >= MOVE_FRAMES then
