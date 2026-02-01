@@ -20,7 +20,7 @@ M.init = function(params)
     for i = 1, num_hands do
         local hand = Hands.new()
         table.insert(M.hands, hand)
-        hand.init()
+        hand.init({player = i+1})
     end
 end 
 

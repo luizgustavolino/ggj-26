@@ -24,20 +24,21 @@ local function new()
             local tx = (M.x + (SPRITE_SIZE / 2)) // 16
             local ty = (M.y + (SPRITE_SIZE)) // 16
             ui.tile(Sprites.img.hands, 1, tx * 16, ty * 16)
-            ui.tile(Sprites.img.hands, 2, M.x, d + M.y - 8)
+            ui.tile(Sprites.img.hands, M.player, M.x, d + M.y - 8)
         end,
         [HandStates.playing] = function(frame)
 
         end
     }
 
-    M.init = function()
+    M.init = function(params)
         M.state = HandStates.waiting
         M.state_frame = 0
         M.x = SCREEN_W / 2
         M.y = SCREEN_H / 2
         M.acel_x = 0
         M.acel_y = 0
+        M.player = params.player
     end
 
     M.change_state = function(new_state)
