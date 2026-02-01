@@ -15,12 +15,12 @@ M.init = function(map, params)
 
     M.hands = {}
     
-    if params.players == 2 then 
+    -- if params.players == 2 then 
+    --     table.insert(M.hands, require "scene.utils.hands")
+    -- elseif params.players == 3 then 
         table.insert(M.hands, require "scene.utils.hands")
-    elseif params.players == 3 then 
         table.insert(M.hands, require "scene.utils.hands")
-        table.insert(M.hands, require "scene.utils.hands")
-    end 
+    -- end 
 
     for i = 1, #M.hands do M.hands[i].init() end 
 end 
@@ -36,13 +36,12 @@ M.update = function(frame)
 end 
 
 M.draw = function(frame)
-    ui.cls(1)
     ui.map(M.map.BG1, 0, 0)
     ui.map(M.map.BG2, 0, 0)
 
     if M.state == GameStates.waiting_start then
         M.ninja.draw(frame)
-        for i = 1, #M.hands do  M.hands[i].draw(frame, i) end
+        for i = 1, #M.hands do M.hands[i].draw(frame, i) end
     end
 end 
 
