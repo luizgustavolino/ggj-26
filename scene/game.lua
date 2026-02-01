@@ -55,6 +55,26 @@ M.init = function(params)
     M.change_state(GameStates.waiting_start)
 end 
 
+M.dispatch_event = function(event)
+    local actions = {
+        [GameEvents.ninja_start_issued] = function()
+            M.change_state(GameStates.ninja_is_hidding)
+        end
+    }
+
+    actions[M.state](frame)
+end 
+
+M.change_state = function(new_state)
+    M.state = new_state
+    M.state_frame = 0
+
+    M.ninja.game_state_changed(new_state)
+    for i = 1, #M.hands do M.hands[i].game_state_changed(new_state) end
+end
+
+--[[ GAME LOOP update/draw ]]
+
 M.update = function(frame)
     local actions = {
         [GameStates.waiting_start] = function(frame)
@@ -77,25 +97,12 @@ M.update = function(frame)
     }
 
     actions[M.state](frame)
+
+    M.ninja.update(frame)
+    for i = 1, #M.hands do
+        M.hands[i].update(frame, i)
+    end
 end 
-
-M.dispatch_event = function(event)
-    local actions = {
-        [GameEvents.ninja_start_issued] = function()
-            M.change_state(GameStates.ninja_is_hidding)
-        end
-    }
-
-    actions[M.state](frame)
-end 
-
-M.change_state = function(new_state)
-    M.state = new_state
-    M.state_frame = 0
-
-    M.ninja.game_state_changed(new_state)
-    for i = 1, #M.hands do M.hands[i].game_state_changed(new_state) end
-end
 
 M.draw = function(frame)
     ui.map(M.map.BG1, 0, 0)
