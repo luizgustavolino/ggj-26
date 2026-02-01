@@ -21,7 +21,7 @@ M.draw = function(frame)
 
     if M.state == TitleStates.waiting_start then
         if frame % 60 > 20 then
-            ui.print("Aperte A ou B para iniciar", 480/2 - 128/2, 200, 181)
+            ui.print("- Aperte A ou B para iniciar -", 480/2 - 128/2, 200, 181)
         end 
     elseif M.state == TitleStates.waiting_players then
         ui.tile(Sprites.img.nplayers, 0, 480/2 - 32 - 64, 220)
