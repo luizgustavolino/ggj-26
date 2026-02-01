@@ -99,13 +99,11 @@ M.draw = function(frame)
     ui.map(M.map.BG1, 0, 0)
     ui.map(M.map.BG2, 0, 0) 
 
-    if M.state == GameStates.waiting_start then
-        M.ninja.draw(frame)
-        for i = 1, #M.hands do
-            M.hands[i].draw(frame, i)
-        end
+    M.ninja.draw(frame)
+    for i = 1, #M.hands do
+        M.hands[i].draw(frame, i)
     end
-
+    
     M.state_frame = M.state_frame + 1
 end 
 
