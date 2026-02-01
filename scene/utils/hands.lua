@@ -16,6 +16,9 @@ local function new()
 
     local drawers = {
         [HandStates.waiting] = function(frame)
+            -- just wait
+        end,
+        [HandStates.playing] = function(frame)
             local d = 0
             if M.acel_x == 0 and M.acel_y == 0 then
                 d = math.sin(frame/10) * 3
@@ -25,9 +28,57 @@ local function new()
             local ty = (M.y + (SPRITE_SIZE)) // 16
             ui.tile(Sprites.img.hands, 1, tx * 16, ty * 16)
             ui.tile(Sprites.img.hands, M.player, M.x, d + M.y - 8)
+        end
+    }
+
+    local updaters = {
+        [HandStates.waiting] = function(frame)
+            -- just wait
         end,
         [HandStates.playing] = function(frame)
+            if ui.btn(UP, player) then
+                M.acel_y = M.acel_y - ACCELERATION
+            end
+            if ui.btn(DOWN, player) then
+                M.acel_y = M.acel_y + ACCELERATION
+            end
+            if ui.btn(LEFT, player) then
+                M.acel_x = M.acel_x - ACCELERATION
+            end
+            if ui.btn(RIGHT, player) then
+                M.acel_x = M.acel_x + ACCELERATION
+            end
 
+            local speed = math.sqrt(M.acel_x * M.acel_x + M.acel_y * M.acel_y)
+            if speed > MAX_SPEED then
+                M.acel_x = (M.acel_x / speed) * MAX_SPEED
+                M.acel_y = (M.acel_y / speed) * MAX_SPEED
+            end
+
+            M.x = M.x + M.acel_x
+            M.y = M.y + M.acel_y
+
+            if M.x < 0 then
+                M.x = 0
+                M.acel_x = -M.acel_x * BOUNCE_FACTOR
+            elseif M.x > SCREEN_W - SPRITE_SIZE then
+                M.x = SCREEN_W - SPRITE_SIZE
+                M.acel_x = -M.acel_x * BOUNCE_FACTOR
+            end
+
+            if M.y < 0 then
+                M.y = 0
+                M.acel_y = -M.acel_y * BOUNCE_FACTOR
+            elseif M.y > SCREEN_H - SPRITE_SIZE then
+                M.y = SCREEN_H - SPRITE_SIZE
+                M.acel_y = -M.acel_y * BOUNCE_FACTOR
+            end
+
+            M.acel_x = M.acel_x * FRICTION
+            M.acel_y = M.acel_y * FRICTION
+
+            if math.abs(M.acel_x) < 0.01 then M.acel_x = 0 end
+            if math.abs(M.acel_y) < 0.01 then M.acel_y = 0 end
         end
     }
 
@@ -47,50 +98,7 @@ local function new()
     end
 
     M.update = function(frame, player)
-
-        if ui.btn(UP, player) then
-            M.acel_y = M.acel_y - ACCELERATION
-        end
-        if ui.btn(DOWN, player) then
-            M.acel_y = M.acel_y + ACCELERATION
-        end
-        if ui.btn(LEFT, player) then
-            M.acel_x = M.acel_x - ACCELERATION
-        end
-        if ui.btn(RIGHT, player) then
-            M.acel_x = M.acel_x + ACCELERATION
-        end
-
-        local speed = math.sqrt(M.acel_x * M.acel_x + M.acel_y * M.acel_y)
-        if speed > MAX_SPEED then
-            M.acel_x = (M.acel_x / speed) * MAX_SPEED
-            M.acel_y = (M.acel_y / speed) * MAX_SPEED
-        end
-
-        M.x = M.x + M.acel_x
-        M.y = M.y + M.acel_y
-
-        if M.x < 0 then
-            M.x = 0
-            M.acel_x = -M.acel_x * BOUNCE_FACTOR
-        elseif M.x > SCREEN_W - SPRITE_SIZE then
-            M.x = SCREEN_W - SPRITE_SIZE
-            M.acel_x = -M.acel_x * BOUNCE_FACTOR
-        end
-
-        if M.y < 0 then
-            M.y = 0
-            M.acel_y = -M.acel_y * BOUNCE_FACTOR
-        elseif M.y > SCREEN_H - SPRITE_SIZE then
-            M.y = SCREEN_H - SPRITE_SIZE
-            M.acel_y = -M.acel_y * BOUNCE_FACTOR
-        end
-
-        M.acel_x = M.acel_x * FRICTION
-        M.acel_y = M.acel_y * FRICTION
-
-        if math.abs(M.acel_x) < 0.01 then M.acel_x = 0 end
-        if math.abs(M.acel_y) < 0.01 then M.acel_y = 0 end
+        updaters[M.state](M.state_frame)
     end
 
     M.draw = function(frame)
