@@ -14,7 +14,7 @@ function update()
     local color = Palette[i]
     local r = color & 0b0000000000011111
     local g = (color & 0b0000001111100000) >> 5
-    local b = (color & 0b0111110000000000) >> 15
+    local b = (color & 0b0111110000000000) >> 10
     
     r = r // 2
     g = g // 2
