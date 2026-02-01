@@ -22,7 +22,7 @@ M.update = function(frame)
         [TitleStates.waiting_players] = function(frame) 
             if ui.btnp(BTN_Z, 0) then
                 M.state = TitleStates.transition_to_game
-            elseif ui.btnp(BTN_X, 0) then
+            elseif ui.btnp(BTN_F, 0) then
                 M.state = TitleStates.waiting_start
             elseif ui.btnp(LEFT, 0) then
                 M.players = 2
@@ -31,7 +31,7 @@ M.update = function(frame)
             end
         end,
         [TitleStates.transition_to_game] = function(frame) 
-            if ui.btnp(BTN_X, 0) then
+            if ui.btnp(BTN_F, 0) then
                 M.state = TitleStates.waiting_players
             end
         end 
@@ -46,7 +46,7 @@ M.draw = function(frame)
 
     if M.state == TitleStates.waiting_start then
         if frame % 60 > 20 then
-            ui.print("- Aperte A ou B para iniciar -", 480/2 - 138/2, 200, 181)
+            ui.print("- Aperte B para iniciar -", 480/2 - 138/2, 200, 181)
         end 
     elseif M.state == TitleStates.waiting_players then
         ui.print("Quantas pessoas para jogar?", 480/2 - 136/2, 150, 181)
@@ -60,7 +60,7 @@ M.draw = function(frame)
         if M.players == 2 then 
                 ui.tile(Sprites.img.hands, 0, p2.x, p2.y)
         elseif M.players == 3 then 
-            ui.tile(Sprites.img.hands, 1, p3.x, p3.y)
+            ui.tile(Sprites.img.hands, 0, p3.x, p3.y)
         end 
     end
 end 
