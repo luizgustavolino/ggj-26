@@ -184,7 +184,7 @@ local function new()
             local f = ((frame / 12) % 3) // 1
             ui.tile(Sprites.img.ninja_a, f, M.x, M.y)
 
-            ui.spr(Sprites.img.hide, M.x, M.y - 16)
+            ui.spr(Sprites.img.hide, M.x - 64, M.y - 32)
         end,
         [NinjaStates.smoke] = function(frame)
             local f = ((frame / 9)) // 1
