@@ -51,7 +51,7 @@ M.init = function(params)
     for i = 1, num_hands do
         local hand = Hands.new()
         table.insert(M.hands, hand)
-        hand.init({player = i+1, game = M})
+        hand.init({player = i+1, game = M, ninja = M.ninja})
     end
 
     M.change_state(GameStates.waiting_start)

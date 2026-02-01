@@ -114,6 +114,7 @@ local function new()
     M.init = function(params)
         M.state = HandStates.map_looking
         M.game = params.game
+        M.ninja = params.ninja
         
         M.state_frame = 0
         M.x = SCREEN_W / 2 - ((params.player * 32) - 76)
@@ -125,7 +126,11 @@ local function new()
     end
 
     M.place_bet = function(x, y) 
-        table.insert(M.bets, {x = x, y = y})
+        if M.ninja.is_at(x, y) then
+            -- wait
+        else 
+            table.insert(M.bets, {x = x, y = y})
+        end 
     end 
 
     M.change_state = function(new_state)

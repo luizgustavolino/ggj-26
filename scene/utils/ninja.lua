@@ -242,6 +242,10 @@ local function new()
         end
     end
 
+    M.is_at = function(x,y)
+        return M.tile_x == x and M.tile_y == y
+    end
+
     M.game_state_changed = function(new_state)
         local actions = {
             [GameStates.waiting_start] = function()
