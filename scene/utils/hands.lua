@@ -127,7 +127,7 @@ local function new()
 
     M.place_bet = function(x, y) 
         if M.ninja.is_at(x, y) then
-            -- wait
+            M.game.dispatch_event(GameEvents.ninja_found)
         else 
             table.insert(M.bets, {x = x, y = y})
         end 

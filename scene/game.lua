@@ -30,7 +30,8 @@ GameStates = {
 
 GameEvents = {
     -- quando o ninja pressiona o botão para começar
-    ninja_start_issued = "ninja_start_issued"
+    ninja_start_issued = "ninja_start_issued",
+    ninja_found = "ninja_found"
 }
 
 M.init = function(params)
@@ -62,6 +63,10 @@ M.dispatch_event = function(event)
     local actions = {
         [GameEvents.ninja_start_issued] = function()
             M.change_state(GameStates.ninja_is_hidding)
+        end,
+        [GameEvents.ninja_found] = function()
+            win = false
+            M.change_state(GameStates.level_conclusion)
         end
     }
 
