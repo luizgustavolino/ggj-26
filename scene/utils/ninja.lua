@@ -12,7 +12,7 @@ local MIN_TILE_X = 0
 local MAX_TILE_X = 29
 
 NinjaStates = {
-    before_start = 'before_start'
+    before_start = 'before_start',
     start = 'start',
     idle = 'idle',
     smoke = 'smoke',
