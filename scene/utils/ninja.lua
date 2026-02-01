@@ -34,6 +34,9 @@ local function new()
     local target_tile_y = 0
     local queued_dir = Directions.none
 
+    local block_layer = nil
+    local map_width = TILES_X
+
     local function get_direction_from_input(player)
         if ui.btn(UP, player) then return Directions.up end
         if ui.btn(DOWN, player) then return Directions.down end
@@ -42,9 +45,24 @@ local function new()
         return Directions.none
     end
 
+    local function is_tile_blocked(tile_x, tile_y)
+        if not block_layer then return false end
+
+        local tile_index = tile_y * map_width + tile_x + 1
+
+        for layer_key, layer_data in pairs(block_layer) do
+            if layer_key ~= "lupi_metadata" and layer_data[tile_index] then
+                return true
+            end
+        end
+
+        return false
+    end
+
     local function can_move_to(tile_x, tile_y)
         if tile_x < MIN_TILE_X or tile_x > MAX_TILE_X then return false end
         if tile_y < MIN_TILE_Y or tile_y > MAX_TILE_Y then return false end
+        if is_tile_blocked(tile_x, tile_y) then return false end
         return true
     end
 
@@ -158,6 +176,11 @@ local function new()
         move_dir = Directions.none
         move_progress = 0
         queued_dir = Directions.none
+
+        block_layer = params.block_layer
+        if block_layer and block_layer.lupi_metadata then
+            map_width = block_layer.lupi_metadata.width
+        end
     end
 
     M.change_state = function(new_state)

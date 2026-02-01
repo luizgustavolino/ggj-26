@@ -12,7 +12,7 @@ M.init = function(params)
 
     local Ninja = require "scene.utils.ninja"
     M.ninja = Ninja.new()
-    M.ninja.init({ player = 0 })
+    M.ninja.init({ player = 0, block_layer = M.map.BLOCK })
 
     local Hands = require "scene.utils.hands"
     local num_hands = M.players - 1
