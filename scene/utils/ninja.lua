@@ -217,6 +217,9 @@ local function new()
             end,
             [GameStates.waiting_ninja_start] = function()
                 M.change_state(NinjaStates.start)
+            end,
+            [GameStates.ninja_is_hidding] = function()
+                M.change_state(NinjaStates.idle)
             end
         }
 
