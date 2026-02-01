@@ -15,6 +15,7 @@ NinjaStates = {
     before_start = 'before_start',
     start = 'start',
     idle = 'idle',
+    freeze = 'freeze',
     smoke = 'smoke',
     moving = 'moving'
 }
@@ -129,6 +130,9 @@ local function new()
                 change_item(frame, player)
             end
         end,
+        [NinjaStates.freeze] = function(frame, player)
+            -- não move!
+        end,
         [NinjaStates.moving] = function(frame, player)
             move_progress = move_progress + 1
 
@@ -195,6 +199,9 @@ local function new()
                 ui.tile(Sprites.img.ninja_a, 3 + f, M.x, M.y)
             end
         end,
+        [NinjaStates.freeze] = function(frame, player)
+            ui.tile(Sprites.map.scene_b, item_index, M.x, M.y)
+        end,
         [NinjaStates.idle] = function(frame)
             ui.tile(Sprites.map.scene_b, item_index, M.x, M.y)
         end,
@@ -236,6 +243,9 @@ local function new()
             end,
             [GameStates.ninja_is_hidding] = function()
                 item_changes_left = 3
+                M.change_state(NinjaStates.idle)
+            end,
+            [GameStates.players_will_seek] = function()
                 M.change_state(NinjaStates.idle)
             end
         }
