@@ -11,7 +11,15 @@ ui.camera()
 function update()
   for i = 1, #Palette do
     local color = Palette[i]
-    ui.palset(i - 1, color)
+    local r = 0b0000000000011111
+    local g = 0b0000001111100000
+    local b = 0b0111110000000000
+    
+    r = r / 2
+    g = g / 2
+    b = b / 2
+
+    ui.palset(i - 1, r | g | b)
   end
   
   frame = frame + 1
