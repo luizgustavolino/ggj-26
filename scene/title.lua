@@ -6,7 +6,7 @@ end
 
 M.update = function(frame)
     if ui.btnp(BTN_Z, 0) and frame > 3 then
-        sfx.fx(60, 80)
+        sfx.fx(60, 20)
     end
 end 
 
