@@ -146,6 +146,9 @@ local function new()
             end,
             [GameStates.players_will_seek] = function()
                 M.change_state(HandStates.playing)
+            end,
+            [GameStates.level_conclusion] = function()
+                M.change_state(HandStates.waiting)
             end
         }
 
