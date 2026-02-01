@@ -247,6 +247,9 @@ local function new()
             end,
             [GameStates.players_will_seek] = function()
                 M.change_state(NinjaStates.freeze)
+            end,
+            [GameStates.level_conclusion] = function()
+                M.change_state(NinjaStates.before_start)
             end
         }
 
