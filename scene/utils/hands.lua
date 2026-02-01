@@ -164,13 +164,13 @@ local function new()
     end
 
     M.draw = function(frame)
-        drawers[M.state](M.state_frame)
-        M.state_frame = M.state_frame + 1
-
         for _, bet in ipairs(M.bets) do
             ui.tile(Sprites.img.hands, 4, bet.x * 16, bet.y * 16)
             ui.tile(Sprites.img.hands, 5, bet.x * 16, bet.y* 16 -16)
-        end        
+        end
+        
+        drawers[M.state](M.state_frame)
+        M.state_frame = M.state_frame + 1
     end
 
     return M

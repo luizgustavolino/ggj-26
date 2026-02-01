@@ -102,7 +102,7 @@ M.update = function(frame)
             end
 
             if total_bets == max_bets then
-                M.win = false
+                M.win = true
                 M.change_state(GameStates.level_conclusion)
             end
         end,
@@ -130,7 +130,11 @@ M.draw = function(frame)
 
     if M.state == GameStates.level_conclusion then
         local f = (1 + math.min(12, (frame//4)%(13*2)))
-        ui.spr(Sprites.img["perdeu" .. f], 480/2 - 128/2, 4)
+        if M.win == true then 
+            ui.spr(Sprites.img["ganhou" .. f], 480/2 - 128/2, 4)
+        else 
+            ui.spr(Sprites.img["perdeu" .. f], 480/2 - 128/2, 4)
+        end 
     end
     
     M.state_frame = M.state_frame + 1
