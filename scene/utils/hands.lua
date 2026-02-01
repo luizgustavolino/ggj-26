@@ -16,7 +16,7 @@ local function new()
 
     local drawers = {
         [HandStates.waiting] = function(frame)
-            -- just wait
+            ui.spr(Sprites.img["observe"..(frame//10)], 480/2 - 128/2, 270/2 - 32/2)
         end,
         [HandStates.playing] = function(frame)
             local d = 0
