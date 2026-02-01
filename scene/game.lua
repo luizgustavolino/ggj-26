@@ -26,8 +26,8 @@ local GameStates = {
 }
 
 M.init = function(params)
-    M.state = GameStates.waiting_start
     M.players = params.players
+    M.state_frame = 0
 
     M.map = require "map.s01"
 
@@ -44,6 +44,8 @@ M.init = function(params)
         table.insert(M.hands, hand)
         hand.init({player = i+1})
     end
+
+    M.change_state(GameStates.waiting_start)
 end 
 
 M.update = function(frame)
@@ -57,6 +59,14 @@ M.update = function(frame)
 
     pcall(actions[M.state], frame)
 end 
+
+M.change_state = function(new_state)
+    M.state = new_state
+    M.state_frame = 0
+
+    M.ninja.game_state_changed(new_state)
+    for i = 1, #M.hands do M.hands[i].game_state_changed(new_state) end
+end
 
 M.draw = function(frame)
     ui.map(M.map.BG1, 0, 0)

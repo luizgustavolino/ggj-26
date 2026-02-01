@@ -202,6 +202,12 @@ local function new()
         end
     end
 
+    M.game_state_changed = function(new_state)
+        if new_state == GameStates.waiting_start then
+            M.change_state(NinjaStates.start)
+        end
+    end 
+
     M.change_state = function(new_state)
         M.state = new_state
         M.state_frame = 0

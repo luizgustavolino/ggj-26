@@ -97,6 +97,12 @@ local function new()
         M.state_frame = 0
     end
 
+    M.game_state_changed = function(new_state)
+        if new_state == GameStates.waiting_start then
+            M.change_state(HandStates.waiting)
+        end
+    end 
+
     M.update = function(frame, game_state)
         updaters[M.state](M.state_frame, M.player - 1)
     end
