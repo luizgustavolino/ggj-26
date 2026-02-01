@@ -93,7 +93,16 @@ M.update = function(frame)
             end 
         end,
         [GameStates.players_will_seek] = function(frame)
-            -- todo
+            -- sum bets of hands
+            local total_bets = 0 
+            local max_bets = 3 * (M.players - 1)
+            for i = 1, #M.hands do
+                total_bets = total_bets + M.hands[i].count_bets()
+            end
+
+            if total_bets == max_bets then
+                M.change_state(GameStates.level_conclusion)
+            end
         end,
         [GameStates.level_conclusion] = function(frame)
             -- todo
@@ -117,7 +126,7 @@ M.draw = function(frame)
         M.hands[i].draw(frame, i)
     end
 
-    if M.state == GameStates.level_conclusion or true then
+    if M.state == GameStates.level_conclusion then
         local f = (1 + math.min(12, (frame//4)%(13*2)))
         ui.spr(Sprites.img["ganhou" .. f], 480/2 - 128/2, 4)
     end

@@ -71,7 +71,7 @@ local function new()
                             break
                         end
                     end
-                    
+
                     if not already_placed then
                         M.place_bet(tx,ty)
                     end
@@ -150,6 +150,10 @@ local function new()
         }
 
         actions[new_state]()
+    end 
+
+    M.count_bets = function()
+        return #M.bets 
     end 
 
     M.update = function(frame, game_state)
