@@ -6,22 +6,19 @@ local GameStates = {
 
 M.init = function(map, params)
     M.state = GameStates.waiting_start
-    M.players = params.players
+    M.players = players
 
     M.map = require "map.s01"
-
+    
     M.ninja = require "scene.utils.ninja"
     M.ninja.init()
 
     local Hands = require "scene.utils.hands"
-    local num_hands = M.players - 1
     M.hands = {}
-    
-    for i = 1, num_hands do
-        local hand = Hands.new()
-        table.insert(M.hands, hand)
-        hand.init()
-    end
+    table.insert(M.hands, Hands.new())
+    table.insert(M.hands, Hands.new())
+
+    for i = 1, #M.hands do M.hands[i].init() end
 end 
 
 M.update = function(frame)
