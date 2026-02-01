@@ -28,6 +28,8 @@ M.draw = function(frame)
         ui.print("Quantas pessoas para jogar?", 480/2 - 136/2, 150, 181)
         ui.tile(Sprites.img.nplayers, 0, 480/2 - 16 - 32, 200)
         ui.tile(Sprites.img.nplayers, 1, 480/2 - 16 + 32, 200)
+
+        ui.tile(Sprites.img.hands, 0, 480/2 - 16 + 32, 200 - 16)
     end
 end 
 
