@@ -222,8 +222,9 @@ local function new()
             ui.tile(Sprites.img.ninja_a, f, M.x, M.y)
         end,
         [NinjaStates.lose] = function(frame, player)
-            local f = 2
-            if frame % 20 >= 10 then  f = 4 end 
+            local f = 12
+            if frame % 60 >= 40 then  f = 13
+            elseif frame % 60 >= 20 then  f = 14 end 
             ui.tile(Sprites.img.ninja_a, f, M.x, M.y)
         end
     }
