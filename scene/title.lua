@@ -9,6 +9,7 @@ local TitleStates = {
 M.init = function()
     M.state = TitleStates.waiting_start 
     M.players = 2
+    M.frame = 0
 end 
 
 M.update = function(frame)
@@ -21,6 +22,7 @@ M.update = function(frame)
         end,
         [TitleStates.waiting_players] = function(frame) 
             if ui.btnp(BTN_Z, 0) then
+                M.frame = 0
                 M.state = TitleStates.transition_to_game
             elseif ui.btnp(BTN_G, 0) then
                 M.state = TitleStates.waiting_start
@@ -30,8 +32,13 @@ M.update = function(frame)
                 M.players = 3
             end
         end,
-        [TitleStates.transition_to_game] = function(frame) 
-            Director.change_scene(Scenes.game, { players = M.players })
+        [TitleStates.transition_to_game] = function(frame)
+            if M.frame == 1 then 
+                Director.fade_out(30)
+            elseif M.frame == 31 then 
+                Director.change_scene(Scenes.game, { players = M.players })
+            end
+            M.frame = M.frame + 1
         end 
     }
 
