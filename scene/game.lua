@@ -1,6 +1,6 @@
 local M = {}
 
-local GameStates = {
+GameStates = {
     -- intro, ninja vai estar esperando
     -- P2 e P3 vão estar invisíveis
     -- 10 segundos para todos verem o mapa
