@@ -15,14 +15,14 @@ M.update = function(frame)
 
     local actions = {
         [TitleStates.waiting_start] = function(frame) 
-            if ui.btn(BTN_Z, 0) then
+            if ui.btnp(BTN_Z, 0) then
                 M.state = TitleStates.waiting_players
             end
         end,
         [TitleStates.waiting_players] = function(frame) 
-            if ui.btn(BTN_Z, 0) then
+            if ui.btnp(BTN_Z, 0) then
                 M.state = TitleStates.transition_to_game
-            elseif ui.btn(BTN_X, 0) then
+            elseif ui.btnp(BTN_X, 0) then
                 M.state = TitleStates.waiting_start
             end
         end 
