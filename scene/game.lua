@@ -1,5 +1,7 @@
 local M = {}
 
+TIME_TO_LOOK_AT_MAP = 300
+
 GameStates = {
     -- intro, ninja vai estar esperando
     -- P2 e P3 vão estar invisíveis
@@ -56,12 +58,12 @@ end
 M.update = function(frame)
     local actions = {
         [GameStates.waiting_start] = function(frame)
-            if M.state_frame == 600 then 
+            if M.state_frame == TIME_TO_LOOK_AT_MAP then 
                 M.change_state(GameStates.waiting_ninja_start)
             end 
         end,
         [GameStates.waiting_ninja_start] = function(frame)
-            -- todo
+            -- espera pelo evento 'GameEvents.ninja_start_issued'
         end,
         [GameStates.ninja_is_hidding] = function(frame)
             -- todo

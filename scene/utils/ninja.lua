@@ -96,13 +96,14 @@ local function new()
             -- só espera
         end,
         [NinjaStates.start] = function(frame, player)
-            if ui.btnp(BTN_Z, player) then
-                M.game.dispatch_event(GameEvents.ninja_start_issued)
+            if ui.btnp(BTN_Z, player) and M.frame > 10 then
+                M.change_state(NinjaStates.smoke)
             end
         end,
         [NinjaStates.smoke] = function(frame, player)
             if frame >= 10 * 9 then
-                M.change_state(NinjaStates.idle)
+                --M.change_state(NinjaStates.idle)
+                M.game.dispatch_event(GameEvents.ninja_start_issued)
             end
         end,
         [NinjaStates.idle] = function(frame, player)
@@ -190,7 +191,7 @@ local function new()
     M.init = function(params)
         params = params or {}
         M.state = NinjaStates.start
-        M.state_frame = 0
+        M.frame = 0
         M.player = params.player or 0
         M.game = params.game
 
@@ -225,16 +226,16 @@ local function new()
 
     M.change_state = function(new_state)
         M.state = new_state
-        M.state_frame = 0
+        M.frame = 0
     end
 
     M.update = function(frame, game_state)
-        updaters[M.state](M.state_frame, M.player, game_state)
+        updaters[M.state](M.frame, M.player, game_state)
     end
 
     M.draw = function(frame)
-        drawers[M.state](M.state_frame)
-        M.state_frame = M.state_frame + 1
+        drawers[M.state](M.frame)
+        M.frame = M.frame + 1
     end
 
     return M
