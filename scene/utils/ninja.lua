@@ -36,6 +36,7 @@ local function new()
     local target_tile_y = 0
     local queued_dir = Directions.none
     local item_index = 0
+    local item_changes_left = 3
 
     local block_layer = nil
     local map_width = TILES_X
@@ -91,6 +92,19 @@ local function new()
         return false
     end
 
+    local function change_item(frame, player)
+        if item_changes_left > 0 then
+            local new_index
+            
+            repeat
+                new_index = math.random(0, 24)
+            until new_index ~= item_index
+
+            item_index = new_index
+            item_changes_left = item_changes_left - 1
+        end 
+    end 
+
     local updaters = {
         [NinjaStates.before_start] = function()
             -- só espera
@@ -112,7 +126,7 @@ local function new()
             end
 
             if ui.btnp(BTN_Z, player) then
-                item_index = (item_index + 1) % 25
+                change_item(frame, player)
             end
         end,
         [NinjaStates.moving] = function(frame, player)
@@ -134,7 +148,7 @@ local function new()
             end
 
             if ui.btnp(BTN_Z, player) then
-                item_index = (item_index + 1) % 25
+                change_item(frame, player)
             end
 
             if move_progress >= MOVE_FRAMES then
@@ -219,6 +233,7 @@ local function new()
                 M.change_state(NinjaStates.start)
             end,
             [GameStates.ninja_is_hidding] = function()
+                item_changes_left = 3
                 M.change_state(NinjaStates.idle)
             end
         }
