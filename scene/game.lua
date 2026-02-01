@@ -9,8 +9,8 @@ M.init = function(map, players)
     M.players = players
 
     M.map = require "map.s01"
-    M.ninja = require "ninja"
-    M.hands = require "hands"
+    M.ninja = require "scene.utils.ninja"
+    M.hands = require "scene.utils.hands"
 
     M.ninja.init()
     M.hands.init()
@@ -19,7 +19,7 @@ end
 M.update = function(frame)
     local actions = {
         [GameStates.waiting_start] = function(frame) 
-            
+            M.hands.update(frame)
         end
     }
 
@@ -28,9 +28,12 @@ end
 
 M.draw = function(frame)
     ui.cls(1)
+    ui.map(M.map.BG1, 0, 0)
+    ui.map(M.map.BG2, 0, 0)
 
     if M.state == GameStates.waiting_start then
-        ui.print("cena do jogo", 480/2 - 128/2, 200, 181)
+        M.ninja.draw(frame)
+        M.hands.draw(frame)
     end
 end 
 
