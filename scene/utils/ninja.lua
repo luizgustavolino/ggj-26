@@ -246,7 +246,7 @@ local function new()
                 M.change_state(NinjaStates.idle)
             end,
             [GameStates.players_will_seek] = function()
-                M.change_state(NinjaStates.idle)
+                M.change_state(NinjaStates.freeze)
             end
         }
 
