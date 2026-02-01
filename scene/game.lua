@@ -10,8 +10,9 @@ M.init = function(params)
 
     M.map = require "map.s01"
 
-    M.ninja = require "scene.utils.ninja"
-    M.ninja.init()
+    local Ninja = require "scene.utils.ninja"
+    M.ninja = Ninja.new()
+    M.ninja.init({ player = 0 })
 
     local Hands = require "scene.utils.hands"
     local num_hands = M.players - 1
@@ -26,8 +27,9 @@ end
 
 M.update = function(frame)
     local actions = {
-        [GameStates.waiting_start] = function(frame) 
-            for i = 1, #M.hands do M.hands[i].update(frame, i) end 
+        [GameStates.waiting_start] = function(frame)
+            M.ninja.update(frame)
+            for i = 1, #M.hands do M.hands[i].update(frame, i) end
         end
     }
 
