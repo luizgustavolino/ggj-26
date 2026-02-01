@@ -100,7 +100,12 @@ local function new()
         M.acel_x = 0
         M.acel_y = 0
         M.player = params.player
+        M.bets = {}
     end
+
+    M.place_bet = function(x, y) 
+        table.insert(M.bets, {x = x, y = y})
+    end 
 
     M.change_state = function(new_state)
         M.state = new_state
@@ -120,6 +125,8 @@ local function new()
             end,
             [GameStates.players_will_seek] = function()
                 M.change_state(HandStates.playing)
+
+                M.place_bet(10,10)
             end
         }
 
@@ -133,6 +140,11 @@ local function new()
     M.draw = function(frame)
         drawers[M.state](M.state_frame)
         M.state_frame = M.state_frame + 1
+
+        for _, bet in ipairs(M.bets) do
+            ui.tile(Sprites.img.hands, 4, bet.x * 16, bet.y * 16)
+            ui.tile(Sprites.img.hands, 5, bet.x * 16, bet.y* 16 -16)
+        end        
     end
 
     return M
