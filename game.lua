@@ -15,10 +15,11 @@ function update()
     local r = color & 0b0000000000011111
     local g = (color & 0b0000001111100000) >> 5
     local b = (color & 0b0111110000000000) >> 10
-    
-    r = r // 1
-    g = g // 1
-    b = b // 1
+
+    local brightness = Director.get_brightness()
+    r = r // brightness
+    g = g // brightness
+    b = b // brightness
 
     ui.palset(i - 1, r | (g << 5) | (b << 10))
 
@@ -29,10 +30,5 @@ function update()
 
   Director.update()
   Director.draw()
-
-  -- if ui.btnp(BTN_Z, 0) and frame > 3 then
-  --   ninja.change_state(NinjaStates.smoke)
-  --   sfx.fx(60, 50)
-  -- end
 
 end
