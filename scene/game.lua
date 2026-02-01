@@ -62,7 +62,10 @@ M.dispatch_event = function(event)
         end
     }
 
-    actions[M.state](frame)
+    local err = actions[M.state](frame)
+    if err then
+        error("GameStates."..M.state.." not implemented")
+    end 
 end 
 
 M.change_state = function(new_state)
