@@ -98,7 +98,7 @@ local function new()
     end
 
     M.update = function(frame, player)
-        updaters[M.state](M.state_frame, M.player)
+        updaters[M.state](M.state_frame, M.player - 1)
     end
 
     M.draw = function(frame)
