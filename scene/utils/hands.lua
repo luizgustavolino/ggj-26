@@ -34,7 +34,7 @@ local function new()
     M.init = function(params)
         M.state = HandStates.waiting
         M.state_frame = 0
-        M.x = SCREEN_W / 2 - ((params.player * 32) + 16)
+        M.x = SCREEN_W / 2 - ((params.player * 32) - 32)
         M.y = SCREEN_H / 2
         M.acel_x = 0
         M.acel_y = 0
