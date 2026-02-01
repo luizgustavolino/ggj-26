@@ -34,7 +34,7 @@ M.update = function(frame)
         end,
         [TitleStates.transition_to_game] = function(frame)
             if M.frame == 1 then 
-                Director.fade_out(30)
+                Director.fade_out(15)
             elseif M.frame == 31 then 
                 Director.change_scene(Scenes.game, { players = M.players })
             end

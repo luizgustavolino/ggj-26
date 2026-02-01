@@ -54,7 +54,7 @@ M.init = function(params)
     end
 
     M.change_state(GameStates.waiting_start)
-    Director.fade_in(30)
+    Director.fade_in(20)
 end 
 
 M.dispatch_event = function(event)

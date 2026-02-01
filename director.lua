@@ -2,7 +2,7 @@ local M = {}
 
 M.brightness = 0
 M.brightness_target = 1
-M.fade_remaining = 60
+M.fade_remaining = 20
 
 Scenes = {
     title = "title",
