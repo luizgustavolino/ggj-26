@@ -30,7 +30,7 @@ M.draw = function(frame)
         ui.tile(Sprites.img.nplayers, 1, 480/2 - 16 + 32, 200)
 
         local d = math.sin(frame/12) * 3
-        ui.tile(Sprites.img.hands, 0, 480/2 - 16 + 32, d + 200 - 16)
+        ui.tile(Sprites.img.hands, 0, 480/2 - 16 + 32 + 8, d + 200 - 24)
     end
 end 
 
