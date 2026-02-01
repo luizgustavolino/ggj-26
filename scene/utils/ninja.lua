@@ -34,6 +34,7 @@ local function new()
     local target_tile_x = 0
     local target_tile_y = 0
     local queued_dir = Directions.none
+    local item_index = 0
 
     local block_layer = nil
     local map_width = TILES_X
@@ -106,6 +107,10 @@ local function new()
             if dir ~= Directions.none then
                 start_move(dir)
             end
+
+            if ui.btn(BTN_Z, player) then
+                M.item_index = (M.item_index + 1) % 25
+            end
         end,
         [NinjaStates.moving] = function(frame, player)
             move_progress = move_progress + 1
@@ -118,6 +123,8 @@ local function new()
                 M.x = M.x - MOVE_STEP
             elseif move_dir == Directions.right then
                 M.x = M.x + MOVE_STEP
+            elseif ui.btn(BTN_Z, player) then
+                M.item_index = (M.item_index + 1) % 25
             end
 
             local input_dir = get_direction_from_input(player)
@@ -162,10 +169,10 @@ local function new()
             end
         end,
         [NinjaStates.idle] = function(frame)
-            ui.tile(Sprites.map.scene_b, 0, M.x, M.y)
+            ui.tile(Sprites.map.scene_b, item_index, M.x, M.y)
         end,
         [NinjaStates.moving] = function(frame)
-            ui.tile(Sprites.map.scene_b, 0, M.x, M.y)
+            ui.tile(Sprites.map.scene_b, item_index, M.x, M.y)
         end
     }
 
