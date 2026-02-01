@@ -4,22 +4,29 @@ local GameStates = {
     waiting_start = "waiting_start"
 }
 
-M.init = function(map, players)
+M.init = function(map, params)
     M.state = GameStates.waiting_start
     M.players = players
 
     M.map = require "map.s01"
     M.ninja = require "scene.utils.ninja"
-    M.hands = require "scene.utils.hands"
+    M.hands = {}
+    
+    if params.players == 2 then 
+        table.insert(M.hands, require "scene.utils.hands")
+    elseif params.players == 3 then 
+        table.insert(M.hands, require "scene.utils.hands")
+        table.insert(M.hands, require "scene.utils.hands")
+    end 
 
     M.ninja.init()
-    M.hands.init()
+    for i = 1, #M.hands do M.hands[i].init() end 
 end 
 
 M.update = function(frame)
     local actions = {
         [GameStates.waiting_start] = function(frame) 
-            M.hands.update(frame)
+            for i = 1, #M.hands do M.hands[i].update(frame, i) end 
         end
     }
 
@@ -33,7 +40,7 @@ M.draw = function(frame)
 
     if M.state == GameStates.waiting_start then
         M.ninja.draw(frame)
-        M.hands.draw(frame)
+        for i = 1, #M.hands do  M.hands[i].draw(frame, i) end
     end
 end 
 

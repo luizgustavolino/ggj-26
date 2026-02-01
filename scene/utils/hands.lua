@@ -44,18 +44,18 @@ M.change_state = function(new_state)
     M.state_frame = 0
 end 
 
-M.update = function(frame)
+M.update = function(frame, player)
     
-    if ui.btn(UP, 0) then
+    if ui.btn(UP, player) then
         M.acel_y = M.acel_y - ACCELERATION
     end
-    if ui.btn(DOWN, 0) then
+    if ui.btn(DOWN, player) then
         M.acel_y = M.acel_y + ACCELERATION
     end
-    if ui.btn(LEFT, 0) then
+    if ui.btn(LEFT, player) then
         M.acel_x = M.acel_x - ACCELERATION
     end
-    if ui.btn(RIGHT, 0) then
+    if ui.btn(RIGHT, player) then
         M.acel_x = M.acel_x + ACCELERATION
     end
 
