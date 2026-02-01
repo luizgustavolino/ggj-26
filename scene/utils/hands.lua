@@ -7,6 +7,7 @@ local SCREEN_H = 270
 local SPRITE_SIZE = 16
 
 HandStates = {
+  map_looking = 'map_looking',
   waiting = 'waiting',
   playing = 'playing'
 }
@@ -15,9 +16,12 @@ local function new()
     local M = {}
 
     local drawers = {
-        [HandStates.waiting] = function(frame)
+        [HandStates.map_looking] = function(frame)
             local f = (1 + math.min(9, (frame//4)%30))
             ui.spr(Sprites.img["observe"..f], 480/2 - 128/2, 270/2 - 32/2)
+        end,
+        [HandStates.waiting] = function(frame)
+            -- só espera
         end,
         [HandStates.playing] = function(frame)
             local d = 0
@@ -33,8 +37,11 @@ local function new()
     }
 
     local updaters = {
+        [HandStates.map_looking] = function(frame)
+            -- só espera
+        end,
         [HandStates.waiting] = function(frame)
-            -- just wait
+            -- só espera
         end,
         [HandStates.playing] = function(frame, player)
             if ui.btn(UP, player) then
@@ -84,7 +91,7 @@ local function new()
     }
 
     M.init = function(params)
-        M.state = HandStates.waiting
+        M.state = HandStates.map_looking
         M.game = params.game
         
         M.state_frame = 0
@@ -103,7 +110,7 @@ local function new()
     M.game_state_changed = function(new_state)
         local actions = {
             [GameStates.waiting_start] = function()
-                M.change_state(HandStates.waiting)
+                M.change_state(HandStates.map_looking)
             end,
             [GameStates.waiting_ninja_start] = function()
                 M.change_state(HandStates.waiting)
