@@ -28,16 +28,16 @@ M.change_state = function(new_state)
 end 
 
 M.update = function(frame)
-    if ui.btn(BTN_UP, 0) then
+    if ui.btn(UP, 0) then
         M.y = M.y - 10
     end 
-    if ui.btn(BTN_DOWN, 0) then
+    if ui.btn(DOWN, 0) then
         M.y = M.y + 10
     end 
-    if ui.btn(BTN_LEFT, 0) then
+    if ui.btn(LEFT, 0) then
         M.x = M.x - 10
     end 
-    if ui.btn(BTN_RIGHT, 0) then
+    if ui.btn(RIGHT, 0) then
         M.x = M.x + 10
     end 
 end 
