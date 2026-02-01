@@ -6,7 +6,7 @@ end
 
 M.update = function(frame)
     if ui.btn(BTN_Z, 0) then
-        ui.spr(Sprites.img.nplayers, 480/2 - 32, 120)
+        ui.tile(Sprites.img.nplayers, 0, 480/2 - 32, 220)
     end
 end 
 
