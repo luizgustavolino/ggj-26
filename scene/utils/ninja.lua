@@ -258,7 +258,7 @@ local function new()
                 M.change_state(NinjaStates.freeze)
             end,
             [GameStates.level_conclusion] = function()
-                M.change_state(NinjaStates.before_start)
+                M.change_state(NinjaStates.win)
             end
         }
 
