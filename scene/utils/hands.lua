@@ -57,6 +57,12 @@ local function new()
                 M.acel_x = M.acel_x + ACCELERATION
             end
 
+            if ui.btn(BTN_Z, player) then 
+                local tx = (M.x + (SPRITE_SIZE / 2)) // 16
+                local ty = (M.y + (SPRITE_SIZE)) // 16
+                M.place_bet(tx,ty)
+            end 
+
             local speed = math.sqrt(M.acel_x * M.acel_x + M.acel_y * M.acel_y)
             if speed > MAX_SPEED then
                 M.acel_x = (M.acel_x / speed) * MAX_SPEED
@@ -125,8 +131,6 @@ local function new()
             end,
             [GameStates.players_will_seek] = function()
                 M.change_state(HandStates.playing)
-
-                M.place_bet(10,10)
             end
         }
 
