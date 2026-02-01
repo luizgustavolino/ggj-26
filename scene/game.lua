@@ -62,7 +62,7 @@ M.dispatch_event = function(event)
         end
     }
 
-    local err = actions[M.state](frame)
+    local err = pcall(actions[M.state], frame)
     if err then
         error("GameStates."..M.state.." not implemented")
     end 
