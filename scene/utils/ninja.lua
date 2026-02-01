@@ -5,7 +5,7 @@ local TILES_X = 30
 local TILES_Y = 17
 local MOVE_STEP = 2
 local MOVE_FRAMES = 8
-
+ 
 local MIN_TILE_Y = 1
 local MAX_TILE_Y = 15
 local MIN_TILE_X = 0
