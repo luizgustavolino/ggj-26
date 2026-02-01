@@ -9,7 +9,10 @@ M.init = function(map, params)
     M.players = players
 
     M.map = require "map.s01"
+    
     M.ninja = require "scene.utils.ninja"
+    M.ninja.init()
+
     M.hands = {}
     
     if params.players == 2 then 
@@ -19,7 +22,6 @@ M.init = function(map, params)
         table.insert(M.hands, require "scene.utils.hands")
     end 
 
-    M.ninja.init()
     for i = 1, #M.hands do M.hands[i].init() end 
 end 
 
