@@ -1,7 +1,7 @@
 local M = {}
 
 local ACCELERATION = 0.2
-local FRICTION = 0.65
+local FRICTION = 0.92
 local MAX_SPEED = 4
 local BOUNCE_FACTOR = 0.7
 local SCREEN_W = 480
