@@ -102,7 +102,6 @@ local function new()
         end,
         [NinjaStates.smoke] = function(frame, player)
             if frame >= 10 * 9 then
-                --M.change_state(NinjaStates.idle)
                 M.game.dispatch_event(GameEvents.ninja_start_issued)
             end
         end,
