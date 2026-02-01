@@ -56,15 +56,25 @@ end
 M.update = function(frame)
     local actions = {
         [GameStates.waiting_start] = function(frame)
-            local mstate = M.state
-            M.ninja.update(frame, 0, mstate)
-            for i = 1, #M.hands do 
-                M.hands[i].update(frame, i, mstate)
-            end
+            if M.state_frame == 600 then 
+                M.change_state(GameStates.waiting_ninja_start)
+            end 
+        end,
+        [GameStates.waiting_ninja_start] = function(frame)
+            -- todo
+        end,
+        [GameStates.ninja_is_hidding] = function(frame)
+            -- todo
+        end,
+        [GameStates.players_will_seek] = function(frame)
+            -- todo
+        end,
+        [GameStates.level_conclusion] = function(frame)
+            -- todo
         end
     }
 
-    pcall(actions[M.state], frame)
+    actions[M.state](frame)
 end 
 
 M.dispatch_event = function(event)
@@ -95,6 +105,8 @@ M.draw = function(frame)
             M.hands[i].draw(frame, i)
         end
     end
+
+    M.state_frame = M.state_frame + 1
 end 
 
 return M
