@@ -200,7 +200,7 @@ local function new()
         end,
         [NinjaStates.smoke] = function(frame)
             local f = ((frame / 9)) // 1
-            if f < 10 then
+            if f < 9 then
                 if f > 3 then
                     ui.tile(Sprites.map.scene_b, item_index, M.x, M.y)          
                 end
@@ -269,6 +269,8 @@ local function new()
                 M.change_state(NinjaStates.idle)
             end,
             [GameStates.players_will_seek] = function()
+                M.tile_x = target_tile_x
+                M.tile_y = target_tile_y
                 M.change_state(NinjaStates.freeze)
             end,
             [GameStates.level_conclusion] = function()
