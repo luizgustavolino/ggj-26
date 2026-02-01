@@ -12,6 +12,7 @@ local MIN_TILE_X = 0
 local MAX_TILE_X = 29
 
 NinjaStates = {
+    before_start = 'before_start'
     start = 'start',
     idle = 'idle',
     smoke = 'smoke',
@@ -91,9 +92,12 @@ local function new()
     end
 
     local updaters = {
+        [NinjaStates.before_start] = function()
+            -- só espera
+        end,
         [NinjaStates.start] = function(frame, player)
             if ui.btnp(BTN_Z, player) then
-                M.change_state(NinjaStates.smoke)
+                M.game.dispatch_event(GameEvents.ninja_start_issued)
             end
         end,
         [NinjaStates.smoke] = function(frame, player)
@@ -159,6 +163,9 @@ local function new()
     }
 
     local drawers = {
+        [NinjaStates.before_start] = function()
+            -- só espera
+        end,
         [NinjaStates.start] = function(frame, player)
             local f = ((frame / 12) % 3) // 1
             ui.tile(Sprites.img.ninja_a, f, M.x, M.y)
@@ -185,6 +192,7 @@ local function new()
         M.state = NinjaStates.start
         M.state_frame = 0
         M.player = params.player or 0
+        M.game = params.game
 
         M.tile_x = 15
         M.tile_y = 8
@@ -203,9 +211,13 @@ local function new()
     end
 
     M.game_state_changed = function(new_state)
-        if new_state == GameStates.waiting_start then
-            M.change_state(NinjaStates.start)
-        end
+        local actions = {
+            [GameStates.waiting_ninja_start] = function()
+                M.change_state(NinjaStates.start)
+            end
+        }
+
+        actions[new_state]()
     end 
 
     M.change_state = function(new_state)

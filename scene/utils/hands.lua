@@ -84,6 +84,8 @@ local function new()
 
     M.init = function(params)
         M.state = HandStates.waiting
+        M.game = params.game
+        
         M.state_frame = 0
         M.x = SCREEN_W / 2 - ((params.player * 32) - 76)
         M.y = SCREEN_H / 2 - 64

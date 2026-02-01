@@ -25,6 +25,11 @@ GameStates = {
     level_conclusion = "level_conclusion",
 }
 
+GameEvents = {
+    -- quando o ninja pressiona o botão para começar
+    ninja_start_issued = "ninja_start_issued"
+}
+
 M.init = function(params)
     M.players = params.players
     M.state_frame = 0
@@ -33,7 +38,7 @@ M.init = function(params)
 
     local Ninja = require "scene.utils.ninja"
     M.ninja = Ninja.new()
-    M.ninja.init({ player = 0, block_layer = M.map.BLOCK })
+    M.ninja.init({ player = 0, block_layer = M.map.BLOCK, game = M })
 
     local Hands = require "scene.utils.hands"
     local num_hands = M.players - 1
@@ -42,7 +47,7 @@ M.init = function(params)
     for i = 1, num_hands do
         local hand = Hands.new()
         table.insert(M.hands, hand)
-        hand.init({player = i+1})
+        hand.init({player = i+1, game = M})
     end
 
     M.change_state(GameStates.waiting_start)
@@ -53,11 +58,23 @@ M.update = function(frame)
         [GameStates.waiting_start] = function(frame)
             local mstate = M.state
             M.ninja.update(frame, 0, mstate)
-            for i = 1, #M.hands do M.hands[i].update(frame, i, mstate) end
+            for i = 1, #M.hands do 
+                M.hands[i].update(frame, i, mstate)
+            end
         end
     }
 
     pcall(actions[M.state], frame)
+end 
+
+M.dispatch_event = function(event)
+    local actions = {
+        [GameEvents.ninja_start_issued] = function()
+            M.change_state(GameStates.ninja_is_hidding)
+        end
+    }
+
+    actions[M.state](frame)
 end 
 
 M.change_state = function(new_state)
@@ -74,7 +91,9 @@ M.draw = function(frame)
 
     if M.state == GameStates.waiting_start then
         M.ninja.draw(frame)
-        for i = 1, #M.hands do M.hands[i].draw(frame, i) end
+        for i = 1, #M.hands do
+            M.hands[i].draw(frame, i)
+        end
     end
 end 
 
