@@ -141,9 +141,9 @@ M.draw = function(frame)
             ui.spr(Sprites.img["perdeu" .. f], 480/2 - 128/2, 4)
         end 
 
-        if ui.btnp(BTN_Q, 0) || ui.btnp(BTN_E, 0) then
-             Director.change_scene("menu")
-        end 
+        -- if ui.btnp(BTN_Q, 0) || ui.btnp(BTN_E, 0) then
+        --      Director.change_scene("menu")
+        -- end 
     end
     
     M.state_frame = M.state_frame + 1
