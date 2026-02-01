@@ -1,15 +1,8 @@
 require "sprites"
 require "palette"
 
-local director = require "director"
-director.init()
-
--- ninja = require "ninja"
--- hands = require "hands"
-
--- ninja.init()
--- hands.init()
--- local s01 = require "map.s01"
+Director = require "director"
+Director.init()
 
 local frame = 0
 
@@ -25,8 +18,8 @@ function update()
   frame = frame + 1
   if frame <= 3 then return end
 
-  director.update()
-  director.draw()
+  Director.update()
+  Director.draw()
   
   -- hands.update(frame)
 

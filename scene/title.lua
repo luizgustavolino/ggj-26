@@ -31,7 +31,9 @@ M.update = function(frame)
             end
         end,
         [TitleStates.transition_to_game] = function(frame) 
-            if ui.btnp(BTN_G, 0) then
+            if ui.btnp(BTN_Z, 0) then
+                Director.change_scene(Scenes.game, { players = M.players })
+            elseif ui.btnp(BTN_G, 0) then
                 M.state = TitleStates.waiting_players
             end
         end 
