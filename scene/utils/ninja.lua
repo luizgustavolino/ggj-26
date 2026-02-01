@@ -214,7 +214,7 @@ local function new()
         end,
         [NinjaStates.win] = function(frame, player)
             local f = 0
-            if frame % 10 >= 5 then  f = 5 end 
+            if frame % 20 >= 10 then  f = 5 end 
             ui.tile(Sprites.img.ninja_a, f, M.x, M.y)
         end,
     }
