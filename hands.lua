@@ -1,5 +1,12 @@
 local M = {}
 
+local ACCELERATION = 0.2
+local FRICTION = 0.92
+local MAX_SPEED = 2
+local BOUNCE_FACTOR = 0.7
+local SCREEN_W = 480
+local SCREEN_H = 270
+
 HandStates = {
   waiting = 'waiting',
   playing = 'playing'
@@ -18,8 +25,10 @@ local drawers = {
 M.init = function()
     M.state = HandStates.waiting
     M.state_frame = 0
-    M.x = 480/2
-    M.y = 270/2
+    M.x = SCREEN_W / 2
+    M.y = SCREEN_H / 2
+    M.acel_x = 0
+    M.acel_y = 0
 end 
 
 M.change_state = function(new_state)
@@ -28,18 +37,50 @@ M.change_state = function(new_state)
 end 
 
 M.update = function(frame)
+    
     if ui.btn(UP, 0) then
-        M.y = M.y - 1
-    end 
+        M.acel_y = M.acel_y - ACCELERATION
+    end
     if ui.btn(DOWN, 0) then
-        M.y = M.y + 1
-    end 
+        M.acel_y = M.acel_y + ACCELERATION
+    end
     if ui.btn(LEFT, 0) then
-        M.x = M.x - 1
-    end 
+        M.acel_x = M.acel_x - ACCELERATION
+    end
     if ui.btn(RIGHT, 0) then
-        M.x = M.x + 1
-    end 
+        M.acel_x = M.acel_x + ACCELERATION
+    end
+
+    local speed = math.sqrt(M.acel_x * M.acel_x + M.acel_y * M.acel_y)
+    if speed > MAX_SPEED then
+        M.acel_x = (M.acel_x / speed) * MAX_SPEED
+        M.acel_y = (M.acel_y / speed) * MAX_SPEED
+    end
+
+    M.x = M.x + M.acel_x
+    M.y = M.y + M.acel_y
+
+    if M.x < 0 then
+        M.x = 0
+        M.acel_x = -M.acel_x * BOUNCE_FACTOR
+    elseif M.x > SCREEN_W then
+        M.x = SCREEN_W
+        M.acel_x = -M.acel_x * BOUNCE_FACTOR
+    end
+
+    if M.y < 0 then
+        M.y = 0
+        M.acel_y = -M.acel_y * BOUNCE_FACTOR
+    elseif M.y > SCREEN_H then
+        M.y = SCREEN_H
+        M.acel_y = -M.acel_y * BOUNCE_FACTOR
+    end
+
+    M.acel_x = M.acel_x * FRICTION
+    M.acel_y = M.acel_y * FRICTION
+
+    if math.abs(M.acel_x) < 0.01 then M.acel_x = 0 end
+    if math.abs(M.acel_y) < 0.01 then M.acel_y = 0 end
 end 
 
 M.draw = function(frame)
