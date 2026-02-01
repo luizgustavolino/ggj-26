@@ -20,7 +20,7 @@ local drawers = {
             d = math.sin(frame/10) * 3
         end
         
-        local tx, ty = (M.x - SPRITE_SIZE / 2) // 16, (M.y + SPRITE_SIZE) // 16
+        local tx, ty = (M.x) // 16, (M.y + SPRITE_SIZE) // 16
         ui.tile(Sprites.img.hands, 1, tx * 16, ty * 16)
         ui.tile(Sprites.img.hands, 0, M.x, d + M.y)
     end,
