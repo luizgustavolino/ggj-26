@@ -58,11 +58,23 @@ local function new()
                 M.acel_x = M.acel_x + ACCELERATION
             end
 
-            if ui.btnp(BTN_Z, player) then 
+            if ui.btnp(BTN_Z, player) then
                 if #M.bets < MAX_BETS then
                     local tx = (M.x + (SPRITE_SIZE / 2)) // 16
                     local ty = (M.y + (SPRITE_SIZE)) // 16
-                    M.place_bet(tx,ty)
+
+                    local already_placed = false
+
+                    for _, bet in ipairs(M.bets) do
+                        if bet.x == tx and bet.y == ty then
+                            already_placed = true
+                            break
+                        end
+                    end
+                    
+                    if not already_placed then
+                        M.place_bet(tx,ty)
+                    end
                 end
             end 
 
