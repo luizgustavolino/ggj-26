@@ -156,8 +156,7 @@ local function new()
             end
         end,
         [NinjaStates.moving] = function(frame)
-            local f = (move_progress % 2)
-            ui.tile(Sprites.img.ninja_a, f, M.x, M.y)
+            ui.tile(Sprites.map.scene_b, 0, M.x, M.y)
         end
     }
 
