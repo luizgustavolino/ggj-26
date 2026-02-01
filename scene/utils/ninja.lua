@@ -212,6 +212,9 @@ local function new()
 
     M.game_state_changed = function(new_state)
         local actions = {
+            [GameStates.waiting_start] = function()
+                M.change_state(NinjaStates.before_start)
+            end,
             [GameStates.waiting_ninja_start] = function()
                 M.change_state(NinjaStates.start)
             end

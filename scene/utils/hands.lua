@@ -100,9 +100,16 @@ local function new()
     end
 
     M.game_state_changed = function(new_state)
-        if new_state == GameStates.waiting_start then
-            M.change_state(HandStates.waiting)
-        end
+        local actions = {
+            [GameStates.waiting_start] = function()
+                M.change_state(HandStates.waiting)
+            end,
+            [GameStates.waiting_ninja_start] = function()
+                M.change_state(HandStates.waiting)
+            end
+        }
+
+        actions[new_state]()
     end 
 
     M.update = function(frame, game_state)
