@@ -3,6 +3,7 @@ local M = {}
 Scenes = {
     title = "title",
     game = "game",
+    
 }
 
 M.init = function ()
