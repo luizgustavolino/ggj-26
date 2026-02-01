@@ -50,7 +50,6 @@ M.draw = function(frame)
         end 
     elseif M.state == TitleStates.waiting_players then
         ui.print("Quantas pessoas para jogar?", 480/2 - 136/2, 150, 181)
-        ui.print("Uma esconde, duas procuram", 480/2 - 136/2, 250, 180)
 
         ui.tile(Sprites.img.nplayers, 0, 480/2 - 16 - 32, 200)
         ui.tile(Sprites.img.nplayers, 1, 480/2 - 16 + 32, 200)
@@ -61,8 +60,10 @@ M.draw = function(frame)
 
         if M.players == 2 then 
             ui.tile(Sprites.img.hands, 0, p2.x, p2.y)
+            ui.print("Uma esconde, uma procura", 480/2 - 136/2, 242, 180)
         elseif M.players == 3 then 
             ui.tile(Sprites.img.hands, 0, p3.x, p3.y)
+            ui.print("Uma esconde, duas procuram", 480/2 - 136/2, 242, 180)
         end 
     end
 end 
