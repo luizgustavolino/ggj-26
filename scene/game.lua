@@ -14,13 +14,8 @@ M.init = function(map, params)
     M.ninja.init()
 
     M.hands = {}
-    
-    -- if params.players == 2 then 
-    --     table.insert(M.hands, require "scene.utils.hands")
-    -- elseif params.players == 3 then 
-        table.insert(M.hands, require "scene.utils.hands")
-        table.insert(M.hands, require "scene.utils.hands")
-    -- end 
+    table.insert(M.hands, require "scene.utils.hands")
+    table.insert(M.hands, require "scene.utils.hands")
 
     for i = 1, #M.hands do M.hands[i].init() end 
 end 
