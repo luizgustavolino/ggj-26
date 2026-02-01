@@ -167,6 +167,9 @@ local function new()
         [NinjaStates.smoke] = function(frame)
             local f = ((frame / 9)) // 1
             if f < 10 then
+                if f > 3 then
+                    ui.tile(Sprites.map.scene_b, item_index, M.x, M.y)          
+                end
                 ui.tile(Sprites.img.ninja_a, 3 + f, M.x, M.y)
             end
         end,
