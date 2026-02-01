@@ -2,7 +2,7 @@ local M = {}
 
 local ACCELERATION = 0.2
 local FRICTION = 0.92
-local MAX_SPEED = 4
+local MAX_SPEED = 5
 local BOUNCE_FACTOR = 0.9
 local SCREEN_W = 480
 local SCREEN_H = 270
@@ -15,7 +15,10 @@ HandStates = {
 
 local drawers = {
     [HandStates.waiting] = function(frame)
-        local d = 0 --math.sin(frame/10) * 3
+        local d = 0
+        if M.acel_x == 0 and M.acel_y == 0 then 
+            d = math.sin(frame/10) * 3
+        end
         ui.tile(Sprites.img.hands, 0, M.x, d + M.y)
     end,
     [HandStates.playing] = function(frame)
