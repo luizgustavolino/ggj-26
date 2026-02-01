@@ -16,9 +16,9 @@ function update()
     local g = (color & 0b0000001111100000) >> 5
     local b = (color & 0b0111110000000000) >> 10
     
-    r = r // 2
-    g = g // 2
-    b = b // 2
+    r = r // 1
+    g = g // 1
+    b = b // 1
 
     ui.palset(i - 1, r | (g << 5) | (b << 10))
 
