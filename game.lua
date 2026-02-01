@@ -15,9 +15,9 @@ function update()
     local g = 0b0000001111100000
     local b = 0b0111110000000000
     
-    r = r / 2
-    g = g / 2
-    b = b / 2
+    r = r // 2
+    g = g // 2
+    b = b // 2
 
     ui.palset(i - 1, r | g | b)
   end
