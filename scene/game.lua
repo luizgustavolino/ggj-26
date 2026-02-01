@@ -38,7 +38,7 @@ end
 
 M.draw = function(frame)
     ui.map(M.map.BG1, 0, 0)
-    ui.map(M.map.BG2, 0, 0)
+    ui.map(M.map.BG2, 0, 0) 
 
     if M.state == GameStates.waiting_start then
         M.ninja.draw(frame)
