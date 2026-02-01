@@ -1,8 +1,11 @@
 require "sprites"
 require "palette"
 ninja = require "ninja"
+hands = require "hands"
 
 ninja.init()
+hands.init()
+
 frame = 0
 
 local s01 = require "map.s01"
@@ -24,6 +27,7 @@ function update()
   ui.map(s01.BG1, 0, 0)
   ui.map(s01.BG2, 0, 0)
   ninja.draw(frame)
+  hands.draw(frame)
 
   if ui.btnp(BTN_Z, 0) and frame > 3 then
     ninja.change_state(NinjaStates.smoke)
