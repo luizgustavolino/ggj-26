@@ -24,6 +24,8 @@ function update()
 
   if frame <= 3 then return end
 
+  hands.update(frame)
+
   ui.map(s01.BG1, 0, 0)
   ui.map(s01.BG2, 0, 0)
   ninja.draw(frame)
