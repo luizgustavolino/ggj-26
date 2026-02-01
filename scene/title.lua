@@ -49,8 +49,8 @@ M.draw = function(frame)
     if M.state == TitleStates.waiting_start then
         if frame % 60 > 20 then
             ui.print("- Aperte B para iniciar -", 480/2 - 128/2, 200, 181)
-            ui.print("Global Game Jam 26 . PUC PR . Arte: LimeZu@itchio", 480/2 - 294/2, 242, 180)
         end 
+        ui.print("Global Game Jam 26 . PUC PR . Arte: LimeZu@itchio", 480/2 - 294/2, 242, 180)
     elseif M.state == TitleStates.waiting_players then
         ui.print("Quantas pessoas para jogar?", 480/2 - 136/2 - 2, 150, 181)
 
