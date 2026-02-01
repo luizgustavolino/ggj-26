@@ -16,7 +16,7 @@ function update()
     local g = (color & 0b0000001111100000) >> 5
     local b = (color & 0b0111110000000000) >> 10
 
-    local brightness = Director.get_brightness()
+    local brightness = math.max(Director.get_brightness(), 1)
     r = r // brightness
     g = g // brightness
     b = b // brightness
