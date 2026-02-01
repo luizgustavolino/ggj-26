@@ -58,7 +58,7 @@ local function new()
                 M.acel_x = M.acel_x + ACCELERATION
             end
 
-            if ui.btn(BTN_Z, player) then 
+            if ui.btnp(BTN_Z, player) then 
                 if #M.bets < MAX_BETS then
                     local tx = (M.x + (SPRITE_SIZE / 2)) // 16
                     local ty = (M.y + (SPRITE_SIZE)) // 16
