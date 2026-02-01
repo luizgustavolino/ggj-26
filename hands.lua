@@ -3,9 +3,10 @@ local M = {}
 local ACCELERATION = 0.2
 local FRICTION = 0.92
 local MAX_SPEED = 4
-local BOUNCE_FACTOR = 0.7
+local BOUNCE_FACTOR = 0.9
 local SCREEN_W = 480
 local SCREEN_H = 270
+local SPRITE_SIZE = 16
 
 HandStates = {
   waiting = 'waiting',
@@ -63,16 +64,16 @@ M.update = function(frame)
     if M.x < 0 then
         M.x = 0
         M.acel_x = -M.acel_x * BOUNCE_FACTOR
-    elseif M.x > SCREEN_W then
-        M.x = SCREEN_W
+    elseif M.x > SCREEN_W - SPRITE_SIZE then
+        M.x = SCREEN_W - SPRITE_SIZE
         M.acel_x = -M.acel_x * BOUNCE_FACTOR
     end
 
     if M.y < 0 then
         M.y = 0
         M.acel_y = -M.acel_y * BOUNCE_FACTOR
-    elseif M.y > SCREEN_H then
-        M.y = SCREEN_H
+    elseif M.y > SCREEN_H - SPRITE_SIZE then
+        M.y = SCREEN_H - SPRITE_SIZE
         M.acel_y = -M.acel_y * BOUNCE_FACTOR
     end
 
