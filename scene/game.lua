@@ -18,10 +18,10 @@ M.init = function(map, params)
     M.hands = {}
     
     for i = 1, num_hands do
-        local hand = Hands.new()
-        table.insert(M.hands, hand)
-        hand.init()
+        table.insert(M.hands, Hands.new())
     end
+
+    for i = 1, #M.hands do M.hands[i].init() end
 end 
 
 M.update = function(frame)
