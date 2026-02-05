@@ -10,6 +10,7 @@ M.init = function()
     M.state = TitleStates.waiting_start 
     M.players = 2
     M.frame = 0
+    M.tone = 100
 end 
 
 M.update = function(frame)
@@ -19,6 +20,15 @@ M.update = function(frame)
             if ui.btnp(BTN_Z, 0) then
                 M.state = TitleStates.waiting_players
             end
+
+            if ui.btnp(LEFT, 0) then
+                M.tone = M.tone + 10
+            elseif ui.btnp(RIGHT, 0) then
+                M.tone = M.tone - 10
+            elseif ui.btnp(BTN_G, 0) then
+                sfx.fx(60, M.tone)
+            end
+            
         end,
         [TitleStates.waiting_players] = function(frame) 
             if ui.btnp(BTN_Z, 0) then
