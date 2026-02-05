@@ -11,6 +11,7 @@ M.init = function()
     M.players = 2
     M.frame = 0
     M.tone = 100
+    M.sample = 60
 end 
 
 M.update = function(frame)
@@ -22,11 +23,17 @@ M.update = function(frame)
             end
 
             if ui.btnp(LEFT, 0) then
-                M.tone = M.tone + 10
+                M.tone = M.tone + 2
             elseif ui.btnp(RIGHT, 0) then
-                M.tone = M.tone - 10
+                M.tone = M.tone - 2
             elseif ui.btnp(BTN_G, 0) then
-                sfx.fx(60, M.tone)
+                sfx.fx(M.sample, M.tone)
+            end
+
+            if ui.btnp(UP, 0) then
+                M.sample = M.sample + 1
+            elseif ui.btnp(DOWN, 0) then
+                M.sample = M.sample - 1
             end
 
         end,
@@ -61,7 +68,7 @@ M.draw = function(frame)
 
     if M.state == TitleStates.waiting_start then
         if frame % 60 > 20 then
-            ui.print("- Aperte B para iniciar - " .. M.tone, 480/2 - 128/2, 200, 181)
+            ui.print("- Aperte B para iniciar - " .. M.sample .. ", "  .. M.tone, 480/2 - 128/2, 200, 181)
         end 
         ui.print("Global Game Jam 26 . PUC PR . Arte: LimeZu@itchio", 480/2 - 245/2, 242, 180)
     elseif M.state == TitleStates.waiting_players then
