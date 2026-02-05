@@ -28,7 +28,7 @@ M.update = function(frame)
             elseif ui.btnp(BTN_G, 0) then
                 sfx.fx(60, M.tone)
             end
-            
+
         end,
         [TitleStates.waiting_players] = function(frame) 
             if ui.btnp(BTN_Z, 0) then
@@ -61,7 +61,7 @@ M.draw = function(frame)
 
     if M.state == TitleStates.waiting_start then
         if frame % 60 > 20 then
-            ui.print("- Aperte B para iniciar -", 480/2 - 128/2, 200, 181)
+            ui.print("- Aperte B para iniciar - " .. M.tone, 480/2 - 128/2, 200, 181)
         end 
         ui.print("Global Game Jam 26 . PUC PR . Arte: LimeZu@itchio", 480/2 - 245/2, 242, 180)
     elseif M.state == TitleStates.waiting_players then
