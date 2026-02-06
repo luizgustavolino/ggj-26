@@ -1,7 +1,8 @@
 require "sprites"
 require "palette"
 
-require "music.title"
+local player = require("music.player")
+player.play(require("music.title"))
 
 Director = require "director"
 Director.init()
@@ -33,5 +34,5 @@ function update()
 
   Director.update()
   Director.draw()
-  menu_song_update(frame)
+  player.tick()
 end
