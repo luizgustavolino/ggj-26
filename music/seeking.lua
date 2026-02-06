@@ -230,44 +230,44 @@ add(at(8, 3), HARP, 69)    -- A4
 -- ============================================================
 
 -- Bar 9: Fmaj7  Flute A . . C6 . . A .
-add(at(9, 0), FLUTE, 81)
-add(at(9, 3), FLUTE, 84)
-add(at(9, 6), FLUTE, 81)
+add(at(9, 0), FLUTE, 76)
+add(at(9, 3), FLUTE, 79)
+add(at(9, 6), FLUTE, 76)
 
 -- Bar 10: Fm7  Flute Ab . . G . F .  (chromatic descent — suspicious!)
-add(at(10, 0), FLUTE, 80)
-add(at(10, 3), FLUTE, 79)
-add(at(10, 5), FLUTE, 77)
+add(at(10, 0), FLUTE, 75)
+add(at(10, 3), FLUTE, 74)
+add(at(10, 5), FLUTE, 72)
 
 -- Bar 11: Em7  Flute G . . E . . B4 .
-add(at(11, 0), FLUTE, 79)
-add(at(11, 3), FLUTE, 76)
-add(at(11, 6), FLUTE, 71)
+add(at(11, 0), FLUTE, 74)
+add(at(11, 3), FLUTE, 71)
+add(at(11, 6), FLUTE, 66)
 
 -- Bar 12: Am7  Flute . . E . . . A .  (questioning)
-add(at(12, 2), FLUTE, 76)
-add(at(12, 6), FLUTE, 81)
+add(at(12, 2), FLUTE, 71)
+add(at(12, 6), FLUTE, 76)
 
 -- Harp echo
 add(at(12, 4), HARP, 64)
 
 -- Bar 13: Dm7  Flute D . . F . . A .
-add(at(13, 0), FLUTE, 74)
-add(at(13, 3), FLUTE, 77)
-add(at(13, 6), FLUTE, 81)
+add(at(13, 0), FLUTE, 69)
+add(at(13, 3), FLUTE, 72)
+add(at(13, 6), FLUTE, 76)
 
 -- Bar 14: G7  Flute G . F . . D . .
-add(at(14, 0), FLUTE, 79)
-add(at(14, 2), FLUTE, 77)
-add(at(14, 5), FLUTE, 74)
+add(at(14, 0), FLUTE, 74)
+add(at(14, 2), FLUTE, 72)
+add(at(14, 5), FLUTE, 69)
 
 -- Bar 15: Cmaj7  Flute E . . G . . . .
-add(at(15, 0), FLUTE, 76)
-add(at(15, 3), FLUTE, 79)
+add(at(15, 0), FLUTE, 71)
+add(at(15, 3), FLUTE, 74)
 
 -- Bar 16: E7  Flute G# . . B . . . .  (uh oh, where are they?)
-add(at(16, 0), FLUTE, 80)
-add(at(16, 3), FLUTE, 83)
+add(at(16, 0), FLUTE, 75)
+add(at(16, 3), FLUTE, 78)
 -- Harp tension
 add(at(16, 5), HARP, 68)   -- G#4
 
@@ -285,8 +285,8 @@ add(at(17, 4), HARP, 69)
 -- Bar 18: Am  Cello E
 add(at(18, 0), CELLO, 52)  -- E3
 -- Flute echo  . . . G . . E .
-add(at(18, 3), FLUTE, 79)
-add(at(18, 6), FLUTE, 76)
+add(at(18, 3), FLUTE, 74)
+add(at(18, 6), FLUTE, 71)
 
 -- Bar 19: Bbmaj7  Cello Bb — dark shift!
 add(at(19, 0), CELLO, 58)  -- Bb3
@@ -300,8 +300,8 @@ add(at(19, 0), RHODES, 69) -- A4 -> Bb creates tension
 -- Bar 20: Bbmaj7  Cello sustain
 add(at(20, 0), CELLO, 58)
 -- Flute wanders  D . . . Bb . . .
-add(at(20, 0), FLUTE, 74)
-add(at(20, 4), FLUTE, 70)  -- Bb4
+add(at(20, 0), FLUTE, 69)
+add(at(20, 4), FLUTE, 65)  -- Bb4
 
 -- Bar 21: Dm7  Cello D
 add(at(21, 0), CELLO, 50)  -- D3
@@ -321,9 +321,9 @@ add(at(22, 0), RHODES, 63) -- Eb4
 -- Bar 23: E7  Cello E
 add(at(23, 0), CELLO, 52)  -- E3
 -- Flute  G# . B . E . . .  (dominant tension)
-add(at(23, 0), FLUTE, 80)  -- G#5
-add(at(23, 2), FLUTE, 83)  -- B5
-add(at(23, 4), FLUTE, 76)  -- E5
+add(at(23, 0), FLUTE, 75)  -- G#5
+add(at(23, 2), FLUTE, 78)  -- B5
+add(at(23, 4), FLUTE, 71)  -- E5
 
 -- Bar 24: E7  resolve approach
 add(at(24, 0), CELLO, 52)
@@ -342,9 +342,9 @@ add(at(25, 0), KALIMBA, 76)
 add(at(25, 2), KALIMBA, 81)
 
 -- Bar 26: Dm  Flute  D . F . A . . .
-add(at(26, 0), FLUTE, 74)
-add(at(26, 2), FLUTE, 77)
-add(at(26, 4), FLUTE, 81)
+add(at(26, 0), FLUTE, 69)
+add(at(26, 2), FLUTE, 72)
+add(at(26, 4), FLUTE, 76)
 -- Kalimba echo
 add(at(26, 6), KALIMBA, 74)
 
@@ -355,9 +355,9 @@ add(at(27, 4), KALIMBA, 79)
 add(at(27, 6), KALIMBA, 76)
 
 -- Bar 28: Am  Flute  A . G . E . . .
-add(at(28, 0), FLUTE, 81)
-add(at(28, 2), FLUTE, 79)
-add(at(28, 4), FLUTE, 76)
+add(at(28, 0), FLUTE, 76)
+add(at(28, 2), FLUTE, 74)
+add(at(28, 4), FLUTE, 71)
 
 -- Bar 29: Fmaj7  Kalimba  A . C6 . A . F .
 add(at(29, 0), KALIMBA, 81)
@@ -366,9 +366,9 @@ add(at(29, 4), KALIMBA, 81)
 add(at(29, 6), KALIMBA, 77)
 
 -- Bar 30: Fm7  Flute chromatic descent  Ab . G . F . . .
-add(at(30, 0), FLUTE, 80)
-add(at(30, 2), FLUTE, 79)
-add(at(30, 4), FLUTE, 77)
+add(at(30, 0), FLUTE, 75)
+add(at(30, 2), FLUTE, 74)
+add(at(30, 4), FLUTE, 72)
 -- Kalimba  Eb (dark!)
 add(at(30, 6), KALIMBA, 75)
 
@@ -377,11 +377,11 @@ add(at(31, 0), KALIMBA, 80)
 add(at(31, 2), KALIMBA, 83)
 add(at(31, 4), KALIMBA, 76)
 -- Flute
-add(at(31, 6), FLUTE, 80)  -- G#5
+add(at(31, 6), FLUTE, 75)  -- G#5
 
 -- Bar 32: E7  Flute  B . G# . . . . .  (tension holds!)
-add(at(32, 0), FLUTE, 83)
-add(at(32, 2), FLUTE, 80)
+add(at(32, 0), FLUTE, 78)
+add(at(32, 2), FLUTE, 75)
 -- Harp
 add(at(32, 4), HARP, 64)
 add(at(32, 6), HARP, 68)
@@ -440,7 +440,7 @@ add(at(40, 2), HARP, 76)   -- E5
 add(at(40, 4), WINDCHM, 60)
 
 -- Flute pickup into F
-add(at(40, 6), FLUTE, 76)  -- E5
+add(at(40, 6), FLUTE, 71)  -- E5
 
 -- ============================================================
 -- SECTION F (bars 41-48): Theme intensifies, loop home
@@ -448,9 +448,9 @@ add(at(40, 6), FLUTE, 76)  -- E5
 -- ============================================================
 
 -- Bar 41: Am  Flute A . G . E . . .
-add(at(41, 0), FLUTE, 81)
-add(at(41, 2), FLUTE, 79)
-add(at(41, 4), FLUTE, 76)
+add(at(41, 0), FLUTE, 76)
+add(at(41, 2), FLUTE, 74)
+add(at(41, 4), FLUTE, 71)
 -- Cello foundation
 add(at(41, 0), CELLO, 57)
 
@@ -460,9 +460,9 @@ add(at(42, 2), KALIMBA, 81)
 add(at(42, 6), KALIMBA, 79)
 
 -- Bar 43: Dm  Flute D . F . A . . .
-add(at(43, 0), FLUTE, 74)
-add(at(43, 2), FLUTE, 77)
-add(at(43, 4), FLUTE, 81)
+add(at(43, 0), FLUTE, 69)
+add(at(43, 2), FLUTE, 72)
+add(at(43, 4), FLUTE, 76)
 -- Cello
 add(at(43, 0), CELLO, 50)
 
@@ -472,14 +472,14 @@ add(at(44, 2), KALIMBA, 77)
 add(at(44, 4), KALIMBA, 74)
 
 -- Bar 45: Fmaj7  Flute + Kalimba together!
-add(at(45, 0), FLUTE, 81)     -- A
+add(at(45, 0), FLUTE, 76)     -- A
 add(at(45, 0), KALIMBA, 84)   -- C6
-add(at(45, 3), FLUTE, 77)     -- F
+add(at(45, 3), FLUTE, 72)     -- F
 add(at(45, 5), KALIMBA, 81)   -- A
 
 -- Bar 46: E7  Chromatic tension!  Flute G# . B . . . . .
-add(at(46, 0), FLUTE, 80)
-add(at(46, 2), FLUTE, 83)
+add(at(46, 0), FLUTE, 75)
+add(at(46, 2), FLUTE, 78)
 -- Kalimba  . . . . E . G# .
 add(at(46, 4), KALIMBA, 76)
 add(at(46, 6), KALIMBA, 80)
@@ -487,9 +487,9 @@ add(at(46, 6), KALIMBA, 80)
 add(at(46, 0), CELLO, 52)
 
 -- Bar 47: Am  Flute resolve  A . . G . . E .
-add(at(47, 0), FLUTE, 81)
-add(at(47, 3), FLUTE, 79)
-add(at(47, 6), FLUTE, 76)
+add(at(47, 0), FLUTE, 76)
+add(at(47, 3), FLUTE, 74)
+add(at(47, 6), FLUTE, 71)
 
 -- Bar 48: Am  winding down to loop  . . E . C . . .
 add(at(48, 2), KALIMBA, 76)
