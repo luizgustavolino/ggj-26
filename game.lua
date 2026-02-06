@@ -2,7 +2,7 @@ require "sprites"
 require "palette"
 
 local player = require("music.player")
-player.play(require("music.title"))
+player.play(require("music.seeking"))
 
 Director = require "director"
 Director.init()
