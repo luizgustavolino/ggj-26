@@ -1,19 +1,6 @@
--- ============================================================
--- "Ninja Escondido"
--- Upbeat sneaky bossa nova — the ninja is tip-toeing around!
--- 120 BPM @ 60 FPS => 30 frames/beat, 120 frames/bar
--- Total: 3840 frames (64 seconds), loops seamlessly
---
--- Structure (32 bars):
---   A  (1-8)   Kalimba sneaky tip-toe melody
---   B  (9-16)  Koto ninja flavor, melody develops
---   C  (17-24) Kalimba playful exchange
---   D  (25-32) Energy builds, loops back
--- ============================================================
-
 local FRAMES_PER_BEAT = 30
 local FRAMES_PER_BAR  = 120
-local TOTAL_FRAMES    = 32 * FRAMES_PER_BAR  -- 3840
+local TOTAL_FRAMES    = 32 * FRAMES_PER_BAR
 
 local BASS    = 59   -- Acoustic Bass A#3 (base midi 46)
 local NYLON   = 23   -- Nylon Guitar B4   (base midi 59)
@@ -109,127 +96,9 @@ add(at(28, 7), BASS, 52)
 add(at(30, 7), BASS, 51)
 add(at(32, 7), BASS, 44)
 
-add(at(1, 2), KALIMBA, 64)
-add(at(1, 6), KALIMBA, 67)
-
-add(at(2, 0), KALIMBA, 69)
-add(at(2, 2), KALIMBA, 67)
-add(at(2, 4), KALIMBA, 64)
-
-add(at(3, 0), KALIMBA, 65)
-
-add(at(4, 2), KALIMBA, 69)
-add(at(4, 4), KALIMBA, 65)
-add(at(4, 6), KALIMBA, 62)
-
-add(at(5, 0), KALIMBA, 59)
-add(at(5, 4), KALIMBA, 62)
-
-add(at(6, 2), KALIMBA, 65)
-add(at(6, 4), KALIMBA, 62)
-add(at(6, 6), KALIMBA, 59)
-
-add(at(7, 0), KALIMBA, 64)
-add(at(7, 2), KALIMBA, 67)
-add(at(7, 6), KALIMBA, 60)
-
-add(at(8, 2), KALIMBA, 64)
-
-add(at(9, 0), KOTO, 69)
-add(at(9, 3), KOTO, 72)
-add(at(9, 6), KOTO, 69)
-
-add(at(10, 0), KOTO, 65)
-add(at(10, 6), KOTO, 69)
-
-add(at(11, 0), KOTO, 67)
-add(at(11, 3), KOTO, 64)
-add(at(11, 6), KOTO, 59)
-
-add(at(12, 2), KOTO, 67)
-add(at(12, 4), KOTO, 64)
-
-add(at(13, 0), KOTO, 69)
-add(at(13, 4), KOTO, 64)
-add(at(13, 6), KOTO, 67)
-
-add(at(14, 0), KOTO, 72)
-add(at(14, 3), KOTO, 69)
-
-add(at(15, 0), KOTO, 62)
-add(at(15, 2), KOTO, 65)
-add(at(15, 6), KOTO, 69)
-
-add(at(16, 0), KOTO, 59)
-add(at(16, 3), KOTO, 62)
-add(at(16, 5), KOTO, 65)
-
-add(at(10, 4), KALIMBA, 60)
-add(at(14, 6), KALIMBA, 64)
-
-add(at(17, 0), KALIMBA, 64)
-add(at(17, 2), KALIMBA, 67)
-
-add(at(18, 0), KALIMBA, 67)
-
-add(at(19, 0), KALIMBA, 69)
-add(at(19, 4), KALIMBA, 64)
-
-
-add(at(21, 0), KALIMBA, 69)
-add(at(21, 2), KALIMBA, 72)
-
-add(at(22, 0), KALIMBA, 64)
-add(at(22, 4), KALIMBA, 69)
-
-add(at(23, 0), KALIMBA, 65)
-add(at(23, 3), KALIMBA, 69)
-add(at(23, 6), KALIMBA, 62)
-
-add(at(25, 0), KALIMBA, 64)
-add(at(25, 2), KALIMBA, 67)
-add(at(25, 4), KALIMBA, 69)
-add(at(25, 6), KALIMBA, 67)
-
-add(at(26, 0), KALIMBA, 69)
-add(at(26, 2), KALIMBA, 67)
-add(at(26, 4), KALIMBA, 64)
-add(at(26, 6), KALIMBA, 60)
-
-add(at(27, 0), KOTO, 62)
-add(at(27, 2), KOTO, 65)
-add(at(27, 4), KOTO, 69)
-
-add(at(28, 0), KALIMBA, 65)
-add(at(28, 2), KALIMBA, 62)
-add(at(28, 6), KALIMBA, 69)
-
-add(at(29, 0), KOTO, 69)
-add(at(29, 0), KALIMBA, 72)
-add(at(29, 2), KALIMBA, 69)
-add(at(29, 4), KALIMBA, 65)
-
-add(at(30, 0), KALIMBA, 68)
-add(at(30, 2), KALIMBA, 67)
-add(at(30, 4), KALIMBA, 65)
-add(at(30, 6), KALIMBA, 63)
-
-add(at(31, 0), KOTO, 64)
-add(at(31, 2), KOTO, 67)
-add(at(31, 4), KOTO, 71)
-
-add(at(32, 0), KALIMBA, 69)
-add(at(32, 3), KALIMBA, 67)
-add(at(32, 6), KALIMBA, 64)
-
-add(at(8, 7),  HARP, 69) 
-add(at(16, 7), HARP, 60) 
-add(at(24, 7), HARP, 69) 
-add(at(32, 7), HARP, 64) 
-
 return {
     notes  = notes,
     length = TOTAL_FRAMES,
     bpm    = 120,
-    title  = "Ninja Escondido",
+    title  = "Ninja Esconde",
 }

@@ -87,6 +87,7 @@ M.update = function(frame)
     local actions = {
         [GameStates.waiting_start] = function(frame)
             if M.state_frame == TIME_TO_LOOK_AT_MAP then 
+                MusicPlayer.play(require("music.hidding"), false)
                 M.change_state(GameStates.waiting_ninja_start)
             end 
         end,
@@ -101,8 +102,8 @@ M.update = function(frame)
         end,
         [GameStates.players_will_seek] = function(frame)
 
-            if M.state_frame == 30 then
-                MusicPlayer.play(require("music.hidding"), true)
+            if M.state_frame == 60 then
+                MusicPlayer.play(require("music.seeking"), false)
             elseif M.state_frame < 30 and M.state_frame % 10 == 0 then 
                 sfx.fx(33, 50)
             end
