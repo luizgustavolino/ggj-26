@@ -57,23 +57,23 @@ for bar = 1, 32 do
     add(at(bar, 2), HIHAT, 53)
     add(at(bar, 6), HIHAT, 53)
 
-    if odd then
-        add(at(bar, 0), CLAVE, 82)
-    else
-        add(at(bar, 4), CLAVE, 82)
-    end
+    -- if odd then
+    --     add(at(bar, 0), CLAVE, 82)
+    -- else
+    --     add(at(bar, 4), CLAVE, 82)
+    -- end
 
-    if is_koto_section then
-        add(at(bar, 1), HIHAT, 53)
-        add(at(bar, 5), HIHAT, 53)
-    end
+    -- -- if is_koto_section then
+    -- --     add(at(bar, 1), HIHAT, 53)
+    -- --     add(at(bar, 5), HIHAT, 53)
+    -- -- end
 
-    if is_build then
-        add(at(bar, 1), MARACA, 89)
-        add(at(bar, 3), MARACA, 89)
-        add(at(bar, 5), MARACA, 89)
-        add(at(bar, 7), MARACA, 89)
-    end
+    -- -- if is_build then
+    -- --     add(at(bar, 1), MARACA, 89)
+    -- --     add(at(bar, 3), MARACA, 89)
+    -- --     add(at(bar, 5), MARACA, 89)
+    -- --     add(at(bar, 7), MARACA, 89)
+    -- -- end
 end
 
 add(at(2, 7), BASS, 49)
