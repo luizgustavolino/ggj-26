@@ -131,7 +131,7 @@ local function new()
             sfx.fx(40, 70)
         else 
             table.insert(M.bets, {x = x, y = y})
-            sfx.fx(40, 40)
+            sfx.fx(6, 50)
         end 
     end 
 
