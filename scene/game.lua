@@ -105,11 +105,11 @@ M.update = function(frame)
         end,
         [GameStates.players_will_seek] = function(frame)
 
-            if M.state_frame == 60 then
+            if M.state_frame == 120 then
                 MusicPlayer.play(require("music.seeking"), false)
-            elseif M.state_frame < 30 and M.state_frame % 10 == 0 then 
+            elseif M.state_frame < 60 and M.state_frame % 10 == 0 then 
                 sfx.fx(33, 60)
-            elseif M.state_frame < 30 and M.state_frame % 10 == 5 then 
+            elseif M.state_frame < 60 and M.state_frame % 10 == 5 then 
                 sfx.fx(33, 50)
             end
 
