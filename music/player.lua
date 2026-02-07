@@ -18,16 +18,15 @@ local current_song = nil
 local frame = 0
 local playing = false
 
-function M.play(song)
+function M.play(song, from_start)
     current_song = song
-    frame = 0
+    frame = from_start and 0 or frame
     playing = true
 end
 
 function M.stop()
     playing = false
     current_song = nil
-    frame = 0
 end
 
 function M.tick()

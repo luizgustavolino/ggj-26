@@ -95,10 +95,18 @@ M.update = function(frame)
         end,
         [GameStates.ninja_is_hidding] = function(frame)
             if M.state_frame == TIME_TO_HIDE then 
+                MusicPlayer.stop()
                 M.change_state(GameStates.players_will_seek)
             end 
         end,
         [GameStates.players_will_seek] = function(frame)
+
+            if M.state_frame == 30 then
+                MusicPlayer.play(require("music.seeking"), true)
+            else if M.state_frame < 30 and M.state_frame % 10 == 0 then 
+                sfx.fx(64, 20)
+            end
+
             -- sum bets of hands
             local total_bets = 0 
             local max_bets = 3 * (M.players - 1)
