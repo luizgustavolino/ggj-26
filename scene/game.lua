@@ -155,7 +155,7 @@ M.draw = function(frame)
             ui.spr(Sprites.img["perdeu" .. f], 480/2 - 128/2, 4)
         end 
 
-        if ui.btnp(BTN_Q, 0) or ui.btnp(BTN_E, 0) then
+        if M.state_frame > 30 and ui.btnp(BTN_Z, 0) then
             Director.change_scene(Scenes.title)
         end 
     end
