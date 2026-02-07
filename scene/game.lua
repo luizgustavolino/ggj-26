@@ -96,13 +96,12 @@ M.update = function(frame)
         end,
         [GameStates.waiting_ninja_start] = function(frame)
             -- espera pelo evento 'GameEvents.ninja_start_issued'
-        end,
-        [GameStates.ninja_is_hidding] = function(frame)
             if M.state_frame == 1 then 
                 MusicPlayer.stop()
                 sfx.fx(40, 60)
             end 
-
+        end,
+        [GameStates.ninja_is_hidding] = function(frame)
             if M.state_frame == TIME_TO_HIDE then 
                 M.change_state(GameStates.players_will_seek)
             end 
@@ -114,7 +113,7 @@ M.update = function(frame)
             elseif M.state_frame < 60 and M.state_frame % 20 == 0 then 
                 sfx.fx(40, 60)
             elseif M.state_frame < 60 and M.state_frame % 20 == 10 then 
-                sfx.fx(33, 55)
+                sfx.fx(62, 55)
             end
 
             -- sum bets of hands
