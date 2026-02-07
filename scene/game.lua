@@ -87,7 +87,7 @@ M.update = function(frame)
     local actions = {
         [GameStates.waiting_start] = function(frame)
             if M.state_frame == 1 then 
-                MusicPlayer.play(require("music.seeking"), false)
+                MusicPlayer.play(require("music.hidding"), false)
             end 
 
             if M.state_frame == TIME_TO_LOOK_AT_MAP then 
@@ -98,15 +98,15 @@ M.update = function(frame)
             -- espera pelo evento 'GameEvents.ninja_start_issued'
         end,
         [GameStates.ninja_is_hidding] = function(frame)
+            if M.state_frame == 1 then MusicPlayer.stop() end 
             if M.state_frame == TIME_TO_HIDE then 
-                MusicPlayer.stop()
                 M.change_state(GameStates.players_will_seek)
             end 
         end,
         [GameStates.players_will_seek] = function(frame)
 
             if M.state_frame == 60 then
-                MusicPlayer.play(require("music.hidding"), false)
+                MusicPlayer.play(require("music.seeking"), false)
             elseif M.state_frame < 30 and M.state_frame % 10 == 0 then 
                 sfx.fx(33, 60)
             elseif M.state_frame < 30 and M.state_frame % 10 == 5 then 
@@ -126,7 +126,7 @@ M.update = function(frame)
             end
         end,
         [GameStates.level_conclusion] = function(frame)
-            -- todo
+            if M.state_frame == 1 then  MusicPlayer.stop() end
         end
     }
 
