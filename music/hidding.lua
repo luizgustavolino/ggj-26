@@ -220,36 +220,36 @@ add(at(14, 6), KALIMBA, 64)   -- E4 ghost
 add(at(17, 0), KALIMBA, 64)
 add(at(17, 2), KALIMBA, 67)
 -- Flute answers  . . . . C5 . E5 .
-add(at(17, 4), FLUTE, 72)
-add(at(17, 6), FLUTE, 76)
+-- add(at(17, 4), FLUTE, 72)
+-- add(at(17, 6), FLUTE, 76)
 
 -- Bar 18: Kalimba  G4 . . . . .
 add(at(18, 0), KALIMBA, 67)
 -- Flute  . . . E5 . . C5 .
-add(at(18, 3), FLUTE, 76)
-add(at(18, 6), FLUTE, 72)
+-- add(at(18, 3), FLUTE, 76)
+-- add(at(18, 6), FLUTE, 72)
 
 -- Bar 19: Kalimba sneaky  A4 . . . E4 . . .
 add(at(19, 0), KALIMBA, 69)
 add(at(19, 4), KALIMBA, 64)
 
 -- Bar 20: Flute follows  . . A5 . . . G5 .
-add(at(20, 2), FLUTE, 81)
-add(at(20, 6), FLUTE, 79)
+-- add(at(20, 2), FLUTE, 81)
+-- add(at(20, 6), FLUTE, 79)
 
 -- Bar 21: Kalimba ascending  A4 . C5 . . .
 add(at(21, 0), KALIMBA, 69)
 add(at(21, 2), KALIMBA, 72)
 -- Flute descending  . . . . A5 . F5 .
-add(at(21, 4), FLUTE, 81)
-add(at(21, 6), FLUTE, 77)
+-- add(at(21, 4), FLUTE, 81)
+-- add(at(21, 6), FLUTE, 77)
 
 -- Bar 22: Octave unison!  Kalimba E4 + Flute E5
 add(at(22, 0), KALIMBA, 64)
-add(at(22, 0), FLUTE, 76)
+-- add(at(22, 0), FLUTE, 76)
 -- Then separate
 add(at(22, 4), KALIMBA, 69)  -- A4
-add(at(22, 4), FLUTE, 72)    -- C5
+-- add(at(22, 4), FLUTE, 72)    -- C5
 
 -- Bar 23: Kalimba  F4 . . A4 . . D4 .
 add(at(23, 0), KALIMBA, 65)
@@ -257,9 +257,9 @@ add(at(23, 3), KALIMBA, 69)
 add(at(23, 6), KALIMBA, 62)
 
 -- Bar 24: Flute leads  B4 . D5 . G5 . . .
-add(at(24, 0), FLUTE, 71)
-add(at(24, 2), FLUTE, 74)
-add(at(24, 4), FLUTE, 79)
+-- add(at(24, 0), FLUTE, 71)
+-- add(at(24, 2), FLUTE, 74)
+-- add(at(24, 4), FLUTE, 79)
 
 -- ============================================================
 -- SECTION D (bars 25-32): Energy builds, loops back
