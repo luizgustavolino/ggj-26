@@ -98,7 +98,7 @@ M.update = function(frame)
             -- espera pelo evento 'GameEvents.ninja_start_issued'
             if M.state_frame == 1 then 
                 MusicPlayer.stop()
-                sfx.fx(40, 50)
+                sfx.fx(40, 56)
             end 
         end,
         [GameStates.ninja_is_hidding] = function(frame)
@@ -111,7 +111,7 @@ M.update = function(frame)
             if M.state_frame == 120 then
                 MusicPlayer.play(require("music.seeking"), false)
             elseif M.state_frame == 1 then 
-                sfx.fx(40, 50)
+                sfx.fx(40, 56)
             elseif M.state_frame < 60 and M.state_frame % 20 == 10 then 
                 sfx.fx(62, 55)
             end
