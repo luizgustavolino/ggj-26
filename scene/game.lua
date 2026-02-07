@@ -110,7 +110,7 @@ M.update = function(frame)
 
             if M.state_frame == 120 then
                 MusicPlayer.play(require("music.seeking"), false)
-            elseif M.state_frame < 60 and M.state_frame % 20 == 0 then 
+            elseif M.state_frame == 1 then 
                 sfx.fx(40, 60)
             elseif M.state_frame < 60 and M.state_frame % 20 == 10 then 
                 sfx.fx(62, 55)

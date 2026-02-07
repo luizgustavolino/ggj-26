@@ -41,13 +41,17 @@ M.update = function(frame)
         end,
         [TitleStates.waiting_players] = function(frame) 
             if ui.btnp(BTN_Z, 0) then
+                sfx.fx(62, 55)
                 M.frame = 0
                 M.state = TitleStates.transition_to_game
             elseif ui.btnp(BTN_G, 0) then
+                sfx.fx(62, 55)
                 M.state = TitleStates.waiting_start
             elseif ui.btnp(LEFT, 0) then
+                sfx.fx(62, 55)
                 M.players = 2
             elseif ui.btnp(RIGHT, 0) then
+                sfx.fx(62, 55)
                 M.players = 3
             end
         end,
