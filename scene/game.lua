@@ -104,7 +104,7 @@ M.update = function(frame)
             if M.state_frame == 30 then
                 MusicPlayer.play(require("music.hidding"), true)
             elseif M.state_frame < 30 and M.state_frame % 10 == 0 then 
-                sfx.fx(64, 20)
+                sfx.fx(33, 50)
             end
 
             -- sum bets of hands
