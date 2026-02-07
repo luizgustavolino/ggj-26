@@ -129,7 +129,13 @@ M.update = function(frame)
             end
         end,
         [GameStates.level_conclusion] = function(frame)
-            if M.state_frame == 1 then  MusicPlayer.stop() end
+            if M.state_frame == 1 then 
+                MusicPlayer.stop()
+            end
+
+            if M.state_frame == 60 then 
+                MusicPlayer.play(require "music.title", false)
+            end 
         end
     }
 

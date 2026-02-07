@@ -12,8 +12,6 @@ M.init = function()
     M.frame = 0
     M.tone = 100
     M.sample = 60
-
-    MusicPlayer.play(require "music.title", false)
 end 
 
 M.update = function(frame)
