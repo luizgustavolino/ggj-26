@@ -128,10 +128,10 @@ local function new()
     M.place_bet = function(x, y) 
         if M.ninja.is_at(x, y) then
             M.game.dispatch_event(GameEvents.ninja_found)
-            sfx.fx(34, 70)
+            sfx.fx(34, 60)
         else 
             table.insert(M.bets, {x = x, y = y})
-            sfx.fx(34, 60)
+            sfx.fx(11, 50)
         end 
     end 
 
