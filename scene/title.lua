@@ -70,6 +70,9 @@ end
 
 M.draw = function(frame)
     ui.cls(1)
+    ui.clip()
+    ui.camera()
+    
     ui.spr(Sprites.img.fuji, 0, 0)
     ui.spr(Sprites.img.title, 480/2 - 170/2, 40)
 
