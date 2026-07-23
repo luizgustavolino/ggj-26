@@ -1,3 +1,4 @@
 name: Pique Esconde Ninja
-public: false
+public: true
 version: 0.2
+minify: true
